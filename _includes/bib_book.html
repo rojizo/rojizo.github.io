@@ -1,0 +1,19 @@
+<span class="bibref book">
+{% include bib_patch_authors.html %}.{% if bibitem.url %}
+  <a class="title" href="{{bibitem.url}}">{{bibitem.title}}</a>,
+{% else %}
+  <span class="title">{{bibitem.title}}</span>,
+{% endif%}
+{% if bibitem.serie %}
+  <span class="serie">{{bibitem.serie}}</span>{% if bibitem.vol %}
+    <span class="vol">{{bibitem.vol}}</span>{% endif %}.
+{% endif %}
+<span class="editorial">{{bibitem.editorial}}</span>,
+<span class="year">{{bibitem.year}}</span>.
+{% if bibitem.doi %}
+  <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>
+{% endif %}
+{% if bibitem.isbn %}
+  <span class="isbn">{{bibitem.isbn}}</span>
+{% endif %}
+</span>

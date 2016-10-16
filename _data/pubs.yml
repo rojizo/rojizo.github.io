@@ -1,0 +1,247 @@
+- title: An example of non-uniquely ergodic lamination
+  kind: article
+  journal: Ergod. Th. & Dynam. Sys.
+  vol: 31
+  num: 2
+  year: 2011
+  pages: 449-457
+  doi: 10.1017/S0143385710000064
+  authors:
+    - name: Lozano Rojo, Álvaro
+
+- title: Insertion-tolerance and repetitiveness of random graphs
+  kind: article
+  journal: Stochastics & Dynamics
+  vol: 17
+  num: 3
+  year: 2017
+  pages: 1750023
+  doi: 10.1142/S021949371750023X
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: Lozano Rojo, Álvaro
+    - name: Vázquez, Antón Carlos
+
+- title: "Organisational Structure and Performance of Consensus Decisions through Mutual Influences: A Computer Simulation Approach"
+  kind: article
+  journal: Decision Support Systems
+  vol: 86
+  year: 2016
+  pages: 61-72
+  authors:
+    - name: Salas-Fumás, Vicente
+    - name: Sáenz, Carlos
+    - name: Lozano Rojo, Álvaro
+  pages: 61-72
+  doi: 10.1016/j.dss.2016.03.008
+
+- title: Control strategies of 3-cell Central Pattern Generator via global stimuli
+  kind: article
+  journal: Scientific Reports
+  vol: 6
+  pages: 23622
+  year: 2016
+  doi: 10.1038/srep23622
+  authors:
+    - name: Lozano Rojo, Álvaro
+    - name: Rodríguez Rodríguez, Marcos
+    - name: Barrio, Roberto
+
+- title: Assessment of the variability of atmospheric pollution in National Parks of mainland Spain
+  kind: article
+  authors:
+    - name: Escudero, Miguel
+    - name: Lozano Rojo, Álvaro
+    - name: Hierro, Juan
+    - name: Tapia, Oscar
+    - name: del Valle, Javier
+    - name: Alastuey, Andres
+    - name: Moreno, T
+    - name: Anzano, Jesus
+    - name: Querol, Xavier
+  journal: Atmospheric Environment
+  vol: 132
+  year: 2016
+  pages: 332-344
+  doi: 10.1016/j.atmosenv.2016.03.006
+
+- title: Exploring the topological sources of robustness against invasion in biological and technological networks
+  kind: article
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+  journal: Scientific Reports
+  vol: 6
+  pages: 20666
+  year: 2016
+  doi: 10.1038/srep20666
+
+- title: Representing 3-Manifolds by Filling Dehn Surfaces
+  kind: book
+  editorial: World Scientific
+  serie: Series on Knots and Everything
+  vol: 58
+  year: 2016
+  isbn: 978-981-4725-48-4
+  url: http://www.worldscientific.com/worldscibooks/10.1142/9827
+  authors:
+    - name: Vigara Benito, Rubén
+    - name: Lozano Rojo, Álvaro
+
+- title: Representing knots by filling Dehn spheres
+  kind: article
+  journal: Journal of Knot Theory and its Ramifications
+  vol: 26
+  year: 2016
+  pages: 1650018
+  authors:
+    - name: Lozano Rojo, Álvaro
+    - name: Vigara Benito, Rubén
+  doi: 10.1142/S0218216516500188
+
+- title: Fast and asymptotic computation of the fixation probability for Moran processes on graphs
+  kind: article
+  journal: BioSystems
+  vol: 129
+  year: 2015
+  pages: 25-35
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+  doi: 10.1016/j.biosystems.2015.01.007
+
+- title: On the subadditivity of Montesinos complexity of closed orientable 3-manifolds
+  kind: article
+  authors:
+    - name: Lozano Rojo, Álvaro
+    - name: Vigara Benito, Rubén
+  journal: RACSAM
+  vol: 109
+  num: 2
+  year: 2015
+  pages: 267-279
+  doi: 10.1007/s13398-014-0179-1
+
+- title: Suspensions of Bernoulli shifts
+  kind: article
+  journal: "Dynamical Systems: An international Journal"
+  year: 2013
+  vol: 28
+  nun: 4
+  pages: 551-566
+  authors: 
+    - name: Lozano Rojo, Álvaro
+    - name: Lukina, Olga
+
+- title: Transversely Cantor laminations as inverse limits
+  kind: article
+  journal: Proceedings of the AMS
+  vol: 139
+  num: 7
+  year: 2011
+  pages: 2615-2630
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: Lozano Rojo, Álvaro
+    - name: Macho-Stadler, Marta
+  doi: 10.1090/S0002-9939-2010-10665-2
+
+- title: New classification scheme for ozone monitoring stations based on frequency distribution of hourly data
+  kind: article
+  journal: Science of the Total Environment
+  vol: 544
+  num: 15
+  year: 2016
+  pages: 1-9
+  authors:
+    - name: Tapia, Oscar
+    - name: Escudero, Miguel
+    - name: Lozano Rojo, Álvaro
+    - name: Anzano, Jesus
+    - name: Mantilla, Enrique
+  doi: 10.1016/j.scitotenv.2015.11.081
+
+- title: An example of non-uniquely ergodic lamination
+  kind: article
+  joural: Ergod. Th. & Dynam. Sys.
+  vol: 31
+  num: 2
+  year: 2011
+  pages: 449-457
+  doi: 10.1017/S0143385710000064
+  authors:
+    - name: Lozano Rojo, Álvaro
+
+- title: Dynamique transverse de la lamination de Ghys-Kenyon
+  kind: article
+  journal: Astérisque
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: Lozano Rojo, Álvaro
+    - name: Macho-Stadler, Marta
+  vol: 323
+  year: 2009
+  pages: 1-16
+
+- title: Affability of Euclidean tilings
+  kind: article
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: Gonzalez Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+  journal: C. R. Acad. Sci. Paris, Ser. I
+  vol: 347
+  year: 2009
+  pages: 947-952
+
+- title: Codimension zero laminations are inverse limits
+  kind: article
+  journal: Topology and its Applications
+  vol: 160
+  year: 2013
+  pages: 341-349
+  authors: 
+    - name: Lozano Rojo, Álvaro
+
+- title: Urban influence on increasing ozone concentrations in a characteristic Mediterranean agglomeration
+  kind: article
+  authors:
+    - name: Escudero, Miguel
+    - name: Lozano Rojo, Álvaro
+    - name: Hierro, Juan
+    - name: del Valle, Javier
+    - name: Mantilla, Enrique
+  doi: 10.1016/j.atmosenv.2014.09.061
+  journal: Atmospheric Environment
+  vol: 99
+  year: 2014
+  pages: 322-332
+
+- title: Dinámica transversa de laminaciones definidas por grafos repetitivos
+  kind: book
+  authors:
+    - name: Lozano Rojo, Álvaro
+  editorial: USC
+  serie: Publicaciones del Departamento de Geometría y Topología
+  vol: 112
+  year: 2008
+  isbn: 978-84-89390-29-4
+
+
+
+
+#### Para revisar
+
+- title: Espacios foliados definidos por grafos
+  journal: Revista del Seminario Iberoamericano de Matemáticas
+  vol: 3
+  num: IV
+  year: 2007
+  pages: 21-38
+  authors:
+    - name: Lozano Rojo, Álvaro
+
+- title: The Cayley foliated space of a graphed pseudogroup
+  a: En Proceedings of the XIV Fall Workshop on Geometry and Physics (Bilbao, 2005), Publ. de la RSME, 10 (2006), 267-272.

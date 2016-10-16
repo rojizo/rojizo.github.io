@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html{% if page.language %} lang="{{page.language}}" {% endif %}>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    <meta name="author" content="{{ site.author.name }}">
+    
+    <link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | relative_url }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        showMathMenu: false,
+        jax: ["input/TeX","output/CommonHTML"],
+        extensions: ["tex2jax.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+        TeX: {
+          equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js","AMSsymbols.js"]
+        },
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          processRefs: true
+        },
+        "HTML-CSS": { 
+          availableFonts: ["TeX"],
+          preferredFont: "TeX"
+        }
+      });
+      MathJax.Hub.Startup.MenuZoom = function () {}; // Bye bye zoom
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+    </script>
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>

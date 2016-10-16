@@ -3,9 +3,11 @@
 ---
 @charset "utf-8";
 
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans');
+
 // Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-family: "Droid Sans", sans-serif;
+$base-font-size:   22px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -26,6 +28,21 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+
+
+@mixin media-query($device) { //From minima
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+
+
+@import 
+  "base",
+  "bib"
+;
+
 // Minima also includes a mixin for defining media queries.
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -36,4 +53,4 @@ $on-laptop:        800px;
 // }
 
 // Import partials from the `minima` theme.
-@import "minima";
+//@import "minima";

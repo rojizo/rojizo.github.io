@@ -1,0 +1,52 @@
+// Bibliografía en general
+.bibref {
+  .author {}
+  .author.last:before {
+    content: ' & ';
+  }
+  .author.middle:before {
+    content: ', ';
+  }
+  
+  .pages:before {
+    content: 'pp.';
+    margin-right: .2ex;
+  }
+  
+  .doi{
+    text-decoration: none;
+  }
+  .doi:before {
+    content: 'doi';
+    margin-right: .4ex;
+  }
+}
+
+// Bibliografía journal
+.bibref.article {
+  .vol {
+    font-weight: bold;
+  }
+  
+  .journal {
+    font-style: italic;
+  }
+  
+  .year:before {
+    content: '(';
+  }
+  .year:after {
+    content: ')';
+  }
+}
+
+// Bibliografía book
+.bibref.book {
+  .title {
+    font-style: italic;
+  }
+  .isbn:before {
+    content: 'ISBN';
+    margin-right: .4ex;
+  }
+}

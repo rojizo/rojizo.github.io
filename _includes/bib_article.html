@@ -1,0 +1,17 @@
+<span class="bibref article">
+{% include bib_patch_authors.html %}.{% if bibitem.url %}
+  <a href="{{bibitem.url}}">{{bibitem.title}}</a>,
+{% else %}
+  {{bibitem.title}},
+{% endif%}
+<span class="journal">{{bibitem.journal}}</span>
+<span class="vol">{{bibitem.vol}}</span>
+{%if bibitem.num %}
+  <span class="num">{{bibitem.num}}</span>
+{% endif %}
+<span class="year">{{bibitem.year}}</span>
+<span class="pages">{{ bibitem.pages | replace:'-','–'}}</span>.
+{% if bibitem.doi %}
+  <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>
+{% endif %}
+</span>
