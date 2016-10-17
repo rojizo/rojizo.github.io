@@ -27,11 +27,9 @@
   .vol {
     font-weight: bold;
   }
-  
   .journal {
     font-style: italic;
   }
-  
   .year:before {
     content: '(';
   }
@@ -44,6 +42,21 @@
 .bibref.book {
   .title {
     font-style: italic;
+  }
+  .isbn:before {
+    content: 'ISBN';
+    margin-right: .4ex;
+  }
+}
+
+
+// Bibliografía book
+.bibref.proceedings {
+  .booktitle {
+    font-style: italic;
+  }
+  .vol {
+    font-weight: bold;
   }
   .isbn:before {
     content: 'ISBN';

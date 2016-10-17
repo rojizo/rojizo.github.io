@@ -1,21 +1,29 @@
-<span class="bibref book">
+<span class="bibref proceedings">
 {% include bib_patch_authors.html %}.{% if bibitem.url %}
   <a class="title" href="{{bibitem.url}}">{{bibitem.title}}</a>,
 {% else %}
   <span class="title">{{bibitem.title}}</span>,
 {% endif%}
+<span class="booktitle-connector">
+  {% if page.language == 'es' %}
+    En
+  {% else %}
+    In
+  {% endif %}
+</span>
+<span class="booktitle">{{ bibitem.booktitle }}</span>,
 {% if bibitem.serie %}
   <span class="serie">{{bibitem.serie}}</span>{% if bibitem.vol %}
-    <span class="vol">{{bibitem.vol}}</span>{% endif %}.
+    <span class="vol">{{bibitem.vol}}</span>{% endif %},
 {% endif %}
 {% if bibitem.editorial %}
   <span class="editorial">{{bibitem.editorial}}</span>,
 {% endif %}
 <span class="year">{{bibitem.year}}</span>.
 {% if bibitem.doi %}
-  <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>
+  <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>.
 {% endif %}
 {% if bibitem.isbn %}
-  <span class="isbn">{{bibitem.isbn}}</span>
+  <span class="isbn">{{bibitem.isbn}}</span>.
 {% endif %}
 </span>
