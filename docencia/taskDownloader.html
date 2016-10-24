@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" type="text/css" href="../css/global.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="../js/utils.js"></script>
-  </head>
-  <body>
-    <h2>Descargando...</h2>
-    <p>
-      Descargando <a id="link" href="" download>la tarea</a>. Si la 
-      descarga no comienza haga click en el enlace.
-    </p>
+---
+layout: page
+title:  Descarga de tareas...
+language: es
+scripts: [utils.js]
+mathjax: false
+---
+
+<h2>Descargando...</h2>
+<p>Descargando <a id="link" href="" download>la tarea</a>. Si la descarga no 
+  comienza haga click en el enlace.</p>
+
+<script type="text/javascript">
+  $(document ).ready(function(){
+    var $_GET = getGet();
+    var docURL = 'tasks/' + $_GET['cid'] + '/' + $_GET['uid'] + $_GET['ext'];
     
-    <script type="text/javascript">
-      $(document ).ready(function(){
-        var $_GET = getGet();
-        var docURL = 'tasks/' + $_GET['cid'] + '/' + $_GET['uid'] + $_GET['ext'];
-        
-        $("#link").attr('href', docURL);
-        document.getElementById("link").click();
-      });
-    </script>
-    
-  </body>
-</html>
+    $("#link").attr('href', docURL);
+    document.getElementById("link").click();
+  });
+</script>

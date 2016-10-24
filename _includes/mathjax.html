@@ -1,0 +1,23 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showMathMenu: false,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js","AMSsymbols.js"]
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      processRefs: true
+    },
+    "HTML-CSS": { 
+      availableFonts: ["TeX"],
+      preferredFont: "TeX"
+    }
+  });
+  MathJax.Hub.Startup.MenuZoom = function () {}; // Bye bye zoom
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
