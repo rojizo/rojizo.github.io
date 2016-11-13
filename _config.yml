@@ -30,6 +30,7 @@ theme: minima
 
 # Defaults
 defaults:
+  - language: en
   - scope:
       path: ""
     values: 

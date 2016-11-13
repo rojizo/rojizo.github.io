@@ -259,10 +259,9 @@
   authors:
     - name: Lozano Rojo, Álvaro
 
-#### Para revisar
 - title: Espacios foliados definidos por grafos
-  tags: research others
-  kind: paper
+  tags: other research
+  kind: article
   journal: Revista del Seminario Iberoamericano de Matemáticas
   vol: 3
   num: IV
