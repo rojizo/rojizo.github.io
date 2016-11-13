@@ -6,13 +6,10 @@
     {% for word in words %}{{ word | truncate: 2, '.' }}{% endfor %}
     {{ name | first }}{% if bibitem.authors.size > 4 %}
       <em>et al</em>{% endif %}</span>{% else %}
-  {% for author in bibitem.authors %}<span class="author
-    {% if forloop.first%}{% elsif forloop.last %}
-      last
-    {% else %}
-      middle
-    {% endif %}">
-    {% assign name = author.name | split: ',' %}
+  {% for author in bibitem.authors %}{% if forloop.last %}
+    &amp;
+  {% elsif forloop.first %}{% else %},{% endif %}<span 
+  class="author">{% assign name = author.name | split: ',' %}
     {% assign words = name | last | strip | split: ' ' %}
     {% for word in words %}{{ word | truncate: 2, '.' }}{% endfor %}
     {{ name | first }}</span>{% endfor %}{% endif %}

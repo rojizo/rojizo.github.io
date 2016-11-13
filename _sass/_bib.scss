@@ -1,11 +1,9 @@
 // Bibliografía en general
 .bibref {
-  .author {}
-  .author.last:before {
-    content: ' & ';
-  }
-  .author.middle:before {
-    content: ', ';
+  .author {
+    em { // Para los et al...
+      font-style: italic;
+    } 
   }
   
   .pages:before {
@@ -29,12 +27,6 @@
   }
   .journal {
     font-style: italic;
-  }
-  .year:before {
-    content: '(';
-  }
-  .year:after {
-    content: ')';
   }
 }
 

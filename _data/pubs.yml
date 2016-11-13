@@ -177,18 +177,6 @@
     - name: Mantilla, Enrique
   doi: 10.1016/j.scitotenv.2015.11.081
 
-- title: An example of non-uniquely ergodic lamination
-  tags: research
-  kind: article
-  journal: Ergod. Th. & Dynam. Sys.
-  vol: 31
-  num: 2
-  year: 2011
-  pages: 449-457
-  doi: 10.1017/S0143385710000064
-  authors:
-    - name: Lozano Rojo, Álvaro
-
 - title: Dynamique transverse de la lamination de Ghys-Kenyon
   tags: research
   kind: article

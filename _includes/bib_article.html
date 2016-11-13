@@ -9,7 +9,7 @@
 {%if bibitem.num %}
   <span class="num">{{bibitem.num}}</span>
 {% endif %}
-<span class="year">{{bibitem.year}}</span>
+<span class="year">({{bibitem.year}})</span>
 <span class="pages">{{ bibitem.pages | replace:'-','–'}}</span>.
 {% if bibitem.doi %}
   <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>
