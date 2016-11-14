@@ -17,9 +17,6 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | relative_url }}" />
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
     {% for script in page.scripts %}
       <script src="{{ script | prepend: '/js/' | relative_url }}"></script>
     {% endfor %}
@@ -29,5 +26,8 @@
   </head>
   <body>
     {{ content }}
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
