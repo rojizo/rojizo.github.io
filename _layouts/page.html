@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -14,9 +14,26 @@ layout: default
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li href=""></li>
+        {% comment First pass to check the larger match %}{% endcomment %}
+        {% assign matched = '' %}
+        {% for item in site.navigation[page.language] %}
+          {% comment Right now it is enough to check in that way %}{% endcomment %}
+          {% if page.url contains item.url and item.url contains matched %}
+            {% assign matched = item.url %}
+          {% endif %}
+        {% endfor %}
+        {% for item in site.navigation[page.language] %}
+        <li{% if matched == item.url %} class="active"{% endif %}>
+          <a href="{{item.url}}">{{ item.name }}</a></li>{% endfor %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% for item in site.navigation %}
+          {% if item[0] == page.language %}
+          <li class="active"><a href="#">{{ item[0] }}</a></li>
+          {% else %}
+          <li><a href="{{ page.url | replace_first:page.language,item[0] | absolute_url }}">{{item[0]}}</a></li>
+          {% endif %}{% endfor %}
       </ul>
     </div><!--/.nav-collapse -->
   </div>

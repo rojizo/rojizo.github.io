@@ -20,13 +20,28 @@ description: > # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://example.com" # the base hostname & protocol for your site
+url: "https://rojizo.github.io" # the base hostname & protocol for your site
 twitter_username: jekylslrb
 github_username:  rojizo
 
 # Build settings
 markdown: kramdown
-
+emptyArray: []
+navigation:
+  en :
+    - url : /en
+      name : Home
+    - url : /en/research
+      name : Research
+    - url : /blog
+      name : Blog
+  es : 
+    - url : /es
+      name : Inicio
+    - url : /es/research
+      name : Investigación
+    
+    
 # Defaults
 defaults:
   - scope:
@@ -34,3 +49,7 @@ defaults:
     values: 
       mathjax: true
       language: "en"
+
+# Gems
+gems:
+  - jekyll-redirect-from

@@ -1,15 +1,30 @@
-{% if bibitem.authors.size == 1 or bibitem.authors.size > 4 %}
-  {% assign author = bibitem.authors | first %}
-  <span class="author">
-    {% assign name = author.name | split: ',' %}
-    {% assign words = name | last | strip | split: ' ' %}
-    {% for word in words %}{{ word | truncate: 2, '.' }}{% endfor %}
-    {{ name | first }}{% if bibitem.authors.size > 4 %}
-      <em>et al</em>{% endif %}</span>{% else %}
+{% 
+  if page.language == 'es' 
+  %}{% 
+    assign andSym = 'y' 
+  %}{% 
+  elsif page.language == 'en' 
+  %}{% 
+    assign andSym = 'and' 
+  %}{% 
+  else 
+  %}{% 
+    assign andSym = '&amp;' 
+  %}{% 
+  endif 
+%}{% if bibitem.authors.size == 1 or bibitem.authors.size > 4 
+%}{% assign author = bibitem.authors | first %}
+  <span class="author">{% 
+      assign name = author.name | split: ',' %}{% 
+      assign words = name | last | strip | split: ' ' %}{% 
+        for word in words %}{{ word | truncate: 2, '.' }}&nbsp;{% 
+      endfor 
+    %}{{ name | first }}{% if bibitem.authors.size > 4 %}
+      <em>et&nbsp;al</em>{% endif %}</span>{% else %}
   {% for author in bibitem.authors %}{% if forloop.last %}
-    &amp;
-  {% elsif forloop.first %}{% else %},{% endif %}<span 
-  class="author">{% assign name = author.name | split: ',' %}
-    {% assign words = name | last | strip | split: ' ' %}
-    {% for word in words %}{{ word | truncate: 2, '.' }}{% endfor %}
-    {{ name | first }}</span>{% endfor %}{% endif %}
+    {{ andSym }}
+  {% elsif forloop.first %}{% else %}, {% endif %}<span 
+  class="author">{% assign name = author.name | split: ',' %}{% 
+    assign words = name | last | strip | split: ' ' %}{% 
+      for word in words %}{{ word | truncate: 2, '.' }}&nbsp;{% 
+      endfor %}{{ name | first }}</span>{% endfor %}{% endif %}

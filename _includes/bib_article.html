@@ -12,6 +12,9 @@
 <span class="year">({{bibitem.year}})</span>
 <span class="pages">{{ bibitem.pages | replace:'-','–'}}</span>.
 {% if bibitem.doi %}
-  <a href="https://doi.org/{{bibitem.doi}}" class="doi">{{bibitem.doi}}</a>
+  <a href="https://doi.org/{{bibitem.doi}}">doi&nbsp;{{bibitem.doi}}</a>
+{% endif %}
+{% if bibitem.arxiv %}
+  <a href="https://arxiv.org/abs/{{bibitem.arxiv}}">arXiv&nbsp;{{bibitem.arxiv}}</a>
 {% endif %}
 </span>

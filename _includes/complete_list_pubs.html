@@ -1,0 +1,36 @@
+{% assign papers = site.emptyArray %}
+{% assign books = site.emptyArray %}
+{% assign others = site.emptyArray %}
+
+{% for bibitem in site.data.pubs %}
+  {% if bibitem.tags contains "research"%}
+    {% if bibitem.tags contains "other" %}
+      {% assign others = others | push: bibitem %}
+    {% else %}
+      {% if bibitem.kind == "book" %}
+        {% assign books = books | push: bibitem %}
+      {% else %}
+        {% assign papers = papers | push: bibitem %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign papers = papers | sort: 'year' %}
+{% assign books = books | sort: 'year' %}
+{% assign others = others | sort: 'year' %}
+
+<h3>Books</h3>
+<ol>{% for bibitem in books reversed %}
+  <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
+{% endfor %}</ol>
+
+<h3>Papers</h3>
+<ol>{% for bibitem in papers reversed %}
+  <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
+{% endfor %}</ol>
+
+<h3>Other publications</h3>
+<ol>{% for bibitem in others reversed %}
+  <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
+{% endfor %}</ol>
+
