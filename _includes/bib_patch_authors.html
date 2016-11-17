@@ -1,18 +1,11 @@
-{% 
-  if page.language == 'es' 
-  %}{% 
-    assign andSym = 'y' 
-  %}{% 
-  elsif page.language == 'en' 
-  %}{% 
-    assign andSym = 'and' 
-  %}{% 
-  else 
-  %}{% 
-    assign andSym = '&amp;' 
-  %}{% 
-  endif 
-%}{% if bibitem.authors.size == 1 or bibitem.authors.size > 4 
+{% case page.language %}{% 
+  when 'es' %}{% 
+    assign andSym = 'y' %}{% 
+  when 'en' %}{% 
+    assign andSym = 'and' %}{% 
+  else %}{% 
+    assign andSym = '&amp;' %}{% 
+endcase %}{% if bibitem.authors.size == 1 or bibitem.authors.size > 4 
 %}{% assign author = bibitem.authors | first %}
   <span class="author">{% 
       assign name = author.name | split: ',' %}{% 

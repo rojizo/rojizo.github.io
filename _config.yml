@@ -43,8 +43,6 @@ navigation:
     
 # Defaults
 defaults:
-  - scope:
-      path: ""
   - values: 
       mathjax: true
       language: "en"
