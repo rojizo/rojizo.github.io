@@ -28,28 +28,37 @@ github_username:  rojizo
 markdown: kramdown
 emptyArray: []
 navigation:
-  en :
-    - url : /en
-      name : Home
-    - url : /en/research
-      name : Research
-    - url : /blog
-      name : Blog
-  es : 
-    - url : /es
-      name : Inicio
-    - url : /es/research
-      name : Investigación
-    
+  en:
+    - url: /en
+      name: Home
+    - url: /en/research
+      name: Research
+    - url: /blog
+      name: Blog
+  es: 
+    - url: /es
+      name: Inicio
+    - url: /es/research
+      name: Investigación
     
 # Defaults
 defaults:
   - scope:
       path: ""
-    values: 
+  - values: 
       mathjax: true
       language: "en"
 
+# Blog stuff
+paginate : 4
+paginate_path : "/blog/page:num/"
+permalink : /blog/:year/:month/:day/:title/
+
+# Staticman
+staticman :
+  allowedFields : ['name', 'comment']
+
 # Gems
-gems:
+gems :
   - jekyll-redirect-from
+  - jekyll-paginate
