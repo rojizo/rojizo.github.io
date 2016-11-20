@@ -25,17 +25,21 @@ permalink: /404.html
       height: 100%;
       margin: 0;
     }
-    #torus {
+    #world {
       width: 100%;
       height: 100%;
       display: block;
+    }
+    #tools{
+      position: absolute;
     }
     </style>
     
   </head>
   <body>
-    <canvas id="torus" resize></canvas>
-    <script type="text/paperscript" src="{{ "/js/404life.js" | relative_url }}" canvas='torus' >
+    <div id="tools"></div>
+    <canvas id="world" resize></canvas>
+    <script type="text/paperscript" src="{{ "/js/404life.js" | relative_url }}" canvas='world' >
     </script>
   </body>
 </html>
