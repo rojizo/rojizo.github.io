@@ -79,7 +79,7 @@ function oneEpoch() {
   Draw();
 }
 
-var lifeState = {0:{0:1,'-1':1,1:1}};
+var lifeState = {0:{'-1':1, 1:1}, '-1':{'-1':1}, 1:{0:1,'-1':1}};
 
 var timerObj;
 
@@ -88,5 +88,5 @@ var timerObj;
 $(function(){
   currentCenter = view.center;
   Draw();
-  timerObj = setInterval(oneEpoch, 100);
+  //timerObj = setInterval(oneEpoch, 100);
 });
