@@ -6,25 +6,8 @@
 var radius = .5;
 var color = 'red';
 var sep = 7;
-var currentCenter;
-var timerObj;
-var lifeState;
-var playTool;
-var stopTool;
 
 var WORLD;
-
-////////////////////////////////////////////////////////////////
-// Event handlers                                             //
-////////////////////////////////////////////////////////////////
-function tools_onMouseDrag(event) {
-  paper.project.activeLayer.position.x += event.delta.x;
-  paper.project.activeLayer.position.y += event.delta.y;
-  currentCenter.x += event.delta.x;
-  currentCenter.y += event.delta.y;
-}
-
-
 
 
 function logisticMap(a) {
@@ -48,7 +31,7 @@ $(document).ready(function() {
   // Initial state
   WORLD.data('lastPos', null);
   
-  // Events
+  // Event handlers
   WORLD.on('mousedown', function(e){
     e.preventDefault();
     WORLD.data('lastPos', {x:e.clientX, y:e.clientY});
