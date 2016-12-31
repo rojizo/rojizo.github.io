@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////
 // Global vars                                                //
 ////////////////////////////////////////////////////////////////
-var RADIUS = .4;
+var RADIUS = .25;
 var WORLD;
 var CX;
 
@@ -18,11 +18,14 @@ function logisticMap(a) {
 ////////////////////////////////////////////////////////////////
 // Draw function for range                                    //
 ////////////////////////////////////////////////////////////////
-function ComputeDrawLogistic(AMIN, AMAX, XMIN, XMAX) {
+function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
+  
+  if (typeof func === 'undefined') func = logisticMap;
+  if (typeof color === 'undefined') color = "#000";
   
   CX.clearRect(0,0,WORLD.width(),WORLD.height());
   
-  CX.fillStyle = "#000";
+  CX.fillStyle = color;
   
   var wWidth = WORLD.width();
   var wHeight = WORLD.height();
@@ -33,11 +36,12 @@ function ComputeDrawLogistic(AMIN, AMAX, XMIN, XMAX) {
   var ASTEP = pA / wWidth / 2;
   
   for(var a=AMIN; a<=AMAX; a+=ASTEP) {
-    var map = logisticMap(a);
+    var map = func(a);
     var x = Math.random() * pX + XMIN;
+    var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
     
     // Transient
-    for(var i=0; i<200; i++) {
+    for(var i=0; i<500; i++) {
       var newx = map(x);
       if(newx == x) break;
       x = newx;
@@ -47,11 +51,13 @@ function ComputeDrawLogistic(AMIN, AMAX, XMIN, XMAX) {
     for(var i=0; i<100; i++) {
       x = map(x);
       if( (x <= XMAX) && (x >= XMIN) ){
-        CX.beginPath();
-        CX.arc( (a - AMIN)/pA * (wWidth - 20) + 10,
-                (1 - (x - XMIN)/pX) * (wHeight - 20) + 10, 
-                RADIUS, 0, 6.2831853072);
-        CX.fill();
+        // CX.beginPath();
+        var posx = (1 - (x - XMIN)/pX) * (wHeight - 20) + 10;
+        CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
+        // CX.arc( posa,
+        //         (1 - (x - XMIN)/pX) * (wHeight - 20) + 10,
+        //         RADIUS, 0, 6.2831853072);
+        // CX.fill();
       }
     }
   }
@@ -112,7 +118,7 @@ function mouseup(e) {
       return;
     }
     
-    ComputeDrawLogistic(_AMIN, _AMAX, _XMIN, _XMAX);
+    DrawBifurcation(_AMIN, _AMAX, _XMIN, _XMAX);
   }
   WORLD.data('dragging', false);
   WORLD.data('inipos', null);
@@ -159,7 +165,7 @@ $(document).ready(function() {
   
   WORLD.on('mousemove', mousemove);
   
-  ComputeDrawLogistic(0, 4, 0, 1);
+  DrawBifurcation(0, 4, 0, 1);
   
 });
 
