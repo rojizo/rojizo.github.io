@@ -14,6 +14,94 @@ function logisticMap(a) {
   return function(x) { return a * x * (1 - x); };
 }
 
+function ilogMap(a) {
+  return function(y) { 
+    var dis = 1 - 4 * y / a;
+    if(dis < 0) return null;
+    dis = Math.sqrt(dis);
+    return [(1 - dis) / 2, (1 + dis) / 2]; 
+  };
+}
+
+////////////////////////////////////////////////////////////////
+// Draw a set of two function                                 //
+////////////////////////////////////////////////////////////////
+function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
+  
+  if (typeof func === 'undefined') func = ilogMap;
+  if (typeof color === 'undefined') color = "#F00";
+  
+  CX.clearRect(0,0,WORLD.width(),WORLD.height());
+  
+  CX.fillStyle = color;
+  
+  var wWidth = WORLD.width();
+  var wHeight = WORLD.height();
+  
+  var pA = (AMAX - AMIN);
+  var pX = (XMAX - XMIN);
+  
+  var ASTEP = pA / wWidth / 2;
+  
+  for(var a=AMIN; a<=AMAX; a+=ASTEP) {
+    var map = func(a);
+    var finalSet = new Set();
+    var mySet = new Set();
+    var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
+    console.log(posa);
+    mySet.add(Math.random() * pX + XMIN);
+    
+    // Transient
+    for(var i=0; i<100; i++) {
+      var tmpSet = new Set();
+      for(let y of mySet) {
+        var fy = map(y);
+        if(fy == null) {
+          finalSet.add(y);
+        } else {
+          tmpSet.add(fy[0]);
+          tmpSet.add(fy[1]);
+        }
+      }
+      mySet = tmpSet;
+      if(mySet.size > 2000)
+        break;
+    }
+    
+    // Draw!
+    for(var i=0; i<100; i++) {
+      var tmpSet = new Set();
+      for(let y of mySet) {
+        var fy = map(y);
+        if(fy == null)
+          finalSet.add(y);
+        else {
+          tmpSet.add(fy[0]);
+          tmpSet.add(fy[1]);
+        }
+      }
+      mySet = tmpSet;
+      
+      for(let y of mySet) 
+        if( (y <= XMAX) && (y >= XMIN) ){
+          var posx = (1 - (y - XMIN)/pX) * (wHeight - 20) + 10;
+          CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
+        }
+      
+      if(mySet.size > 2000)
+        break;
+    }
+    
+    for(let y of finalSet) 
+      if( (y <= XMAX) && (y >= XMIN) ){
+        var posx = (1 - (y - XMIN)/pX) * (wHeight - 20) + 10;
+        CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
+      }
+    
+  }
+}
+
+
 
 ////////////////////////////////////////////////////////////////
 // Draw function for range                                    //
@@ -24,6 +112,7 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
   if (typeof color === 'undefined') color = "#000";
   
   CX.clearRect(0,0,WORLD.width(),WORLD.height());
+  //iDrawBifurcation(AMIN, AMAX, XMIN, XMAX);
   
   CX.fillStyle = color;
   
