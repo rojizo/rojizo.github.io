@@ -48,7 +48,7 @@ function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     var finalSet = new Set();
     var mySet = new Set();
     var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
-    console.log(posa);
+//    console.log(posa);
     mySet.add(Math.random() * pX + XMIN);
     
     // Transient
@@ -138,6 +138,9 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
   
   document.querySelector("#world").width = WORLD.width();
   document.querySelector("#world").height = WORLD.height();
+
+  //iDrawBifurcation(AMIN, AMAX, XMIN, XMAX);
+
   
   CX.fillStyle = color;
   
