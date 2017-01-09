@@ -106,13 +106,38 @@ function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
 ////////////////////////////////////////////////////////////////
 // Draw function for range                                    //
 ////////////////////////////////////////////////////////////////
+function DrawBifurcationAndUpdate(AMIN, AMAX, XMIN, XMAX, func, color) {
+  
+  DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color);
+  
+  if(typeof(WORLD.data('AMAX')) !== 'undefined'){
+    WORLD.data('pile').push({
+      'AMAX': WORLD.data('AMAX'), 'AMIN': WORLD.data('AMIN'),
+      'XMAX': WORLD.data('XMAX'), 'XMIN': WORLD.data('XMIN'),
+      'TRANSIENT': WORLD.data('TRANSIENT'),
+      'ITER': WORLD.data('ITER')
+    });
+  }
+  
+  WORLD.data({ 
+    'imgWOgui': CX.getImageData(0, 0, WORLD.width(), WORLD.height()),
+    'AMAX': AMAX, 'AMIN': AMIN,
+    'XMAX': XMAX, 'XMIN': XMIN,
+    'TRANSIENT': $('#TRANSIENT').val(), 'ITER': $('#ITER').val()
+  });
+  
+  $('#range').html('a ∈ [' + AMIN + ', ' + AMAX + '] &nbsp;&nbsp;&nbsp;' + 
+                   'x ∈ [' + XMIN + ', ' + XMAX + ']');
+  
+}
+
 function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
   
   if (typeof func === 'undefined') func = logisticMap;
   if (typeof color === 'undefined') color = "#000";
   
-  CX.clearRect(0,0,WORLD.width(),WORLD.height());
-  //iDrawBifurcation(AMIN, AMAX, XMIN, XMAX);
+  document.querySelector("#world").width = WORLD.width();
+  document.querySelector("#world").height = WORLD.height();
   
   CX.fillStyle = color;
   
@@ -130,40 +155,49 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
     
     // Transient
-    for(var i=0; i<500; i++) {
+    for(var i=$('#TRANSIENT').val(); i>0; i--) {
       var newx = map(x);
       if(newx == x) break;
       x = newx;
     }
     
     // Draw!
-    for(var i=0; i<100; i++) {
+    for(var i=$('#ITER').val(); i>0; i--) {
       x = map(x);
       if( (x <= XMAX) && (x >= XMIN) ){
-        // CX.beginPath();
         var posx = (1 - (x - XMIN)/pX) * (wHeight - 20) + 10;
         CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
-        // CX.arc( posa,
-        //         (1 - (x - XMIN)/pX) * (wHeight - 20) + 10,
-        //         RADIUS, 0, 6.2831853072);
-        // CX.fill();
       }
     }
   }
   
+  if(typeof(WORLD.data('AMAX')) !== 'undefined'){
+    WORLD.data('pile').push({
+      'AMAX': WORLD.data('AMAX'), 'AMIN': WORLD.data('AMIN'),
+      'XMAX': WORLD.data('XMAX'), 'XMIN': WORLD.data('XMIN'),
+      'TRANSIENT': WORLD.data('TRANSIENT'),
+      'ITER': WORLD.data('ITER')
+    });
+  }
+  
   WORLD.data({ 
     'imgWOgui': CX.getImageData(0, 0, wWidth, wHeight),
-    'AMAX': AMAX,
-    'AMIN': AMIN,
-    'XMAX': XMAX,
-    'XMIN': XMIN,
+    'AMAX': AMAX, 'AMIN': AMIN,
+    'XMAX': XMAX, 'XMIN': XMIN,
+    'TRANSIENT': $('#TRANSIENT').val(), 'ITER': $('#ITER').val()
   });
+  
+  $('#range').html('a ∈ [' + AMIN + ', ' + AMAX + '] &nbsp;&nbsp;&nbsp;' + 
+                   'x ∈ [' + XMIN + ', ' + XMAX + ']');
 }
 
 ////////////////////////////////////////////////////////////////
 // Events Handlers                                            //
 ////////////////////////////////////////////////////////////////
 function mouseup(e) {
+  if(this !== e.target) 
+    return
+  
   e.preventDefault();
   
   var AMAX = WORLD.data('AMAX');
@@ -207,13 +241,16 @@ function mouseup(e) {
       return;
     }
     
-    DrawBifurcation(_AMIN, _AMAX, _XMIN, _XMAX);
+    DrawBifurcationAndUpdate(_AMIN, _AMAX, _XMIN, _XMAX);
   }
   WORLD.data('dragging', false);
   WORLD.data('inipos', null);
 }
 
 function mousemove(e) {
+  if(this !== e.target) 
+    return;
+  
   e.preventDefault();
   var corner = WORLD.data('inipos');
   if( corner !== null ) {
@@ -227,6 +264,30 @@ function mousemove(e) {
   }
 }
 
+function mousedown(e) {
+  if(this !== e.target) 
+    return;
+  e.preventDefault();
+  WORLD.data('inipos', {x:e.clientX, y:e.clientY});
+}
+
+function dblclick(e){
+  if(this !== e.target) 
+    return;
+  
+  e.preventDefault();
+  if(WORLD.data('pile').length != 0) {
+    var params = WORLD.data('pile').pop();
+    
+    WORLD.removeData('imgWOgui').removeData('AMAX')
+      .removeData('AMIN').removeData('XMAX').removeData('XMIN');
+    
+    $('#TRANSIENT').val(params.TRANSIENT);
+    $('#ITER').val(params.ITER);
+    DrawBifurcationAndUpdate(params.AMIN, params.AMAX, params.XMIN, params.XMAX);
+  }
+}
+
 ////////////////////////////////////////////////////////////////
 // Entry point                                                //
 ////////////////////////////////////////////////////////////////
@@ -237,25 +298,37 @@ $(document).ready(function() {
   
   // and the context
   CX = document.querySelector("#world").getContext("2d");
-  document.querySelector("#world").width = WORLD.width();
-  document.querySelector("#world").height = WORLD.height();
   
   // Initial state
   WORLD.data('dragging', false);
   WORLD.data('inipos', null);
+  WORLD.data('pile', []);
   
   // Event handlers
-  WORLD.on('mousedown', function(e) {
-    e.preventDefault();
-    WORLD.data('inipos', {x:e.clientX, y:e.clientY});
+  WORLD.on('mousedown', mousedown).on('mouseup', mouseup)
+    .on('mousemove', mousemove).on('dblclick', dblclick);
+  $('#tools_container').on('mouseup', mouseup).on('mousemove', mousemove)
+    .on('mousedown', mousedown).on('dblclick', dblclick);
+  
+  $('#compu').on('click',function(e){
+    DrawBifurcation(WORLD.data('AMIN'), WORLD.data('AMAX'),
+        WORLD.data('XMIN'), WORLD.data('XMAX'));
   });
   
-  WORLD.on('mouseup', mouseup);
+  // First draw
+  DrawBifurcationAndUpdate(0, 4, 0, 1);
   
-  WORLD.on('mousemove', mousemove);
   
-  DrawBifurcation(0, 4, 0, 1);
   
+  //Resize event
+  var timer;
+  $(window).on('resize', function(e){
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      DrawBifurcation(WORLD.data('AMIN'), WORLD.data('AMAX'),
+        WORLD.data('XMIN'), WORLD.data('XMAX'))
+    }, 500);
+  });
 });
 
 

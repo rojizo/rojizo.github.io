@@ -34,21 +34,60 @@ language: en
     }
     #tools {
       position: absolute;
+      width: 100%;
+      height: 200px;
+      top: -195px;
+      left: 0;
+      background-color: #7575F0;
+      background-image: -webkit-linear-gradient(10deg, rgba(160,160,240,.4), white); 
+      background-image:    -moz-linear-gradient(10deg, rgba(160,160,240,.4), white); 
+      background-image:      -o-linear-gradient(10deg, rgba(160,160,240,.4), white); 
+      background: linear-gradient(10deg, rgba(160,160,240,.4), white);
+      box-shadow: #888 0px 0px 2px 1px;
+      transition: .5s ease;
+      cursor: auto;
     }
     
-    #progress {
+    #tools_container {
       position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 15%;
+      cursor: crosshair;
+    }
+    
+    #tools_container:hover > #tools {
+      top: -170px;
+    }
+    
+    #tools_container:hover > #tools:hover {
+      top: 0;
+      box-shadow: #888 0px 0px 20px 10px;
+    }
+    
+    #range {
+      font-size: .9em;
+      position: absolute;
+      display: inline-block;
       bottom: 0;
       left: 0;
-      width: 50%;
-      height: 4px;
-      background: rgba(255,0,0,.5);
+      padding: 3px 10px;
+      background: rgba(255,255,255,.8);
+      border-radius: 3px;
     }
     </style>
     
   </head>
   <body>
-    <div id="tools"></div>
+    <div id="tools_container">
+      <div id="tools">
+        <p>Transient: <input type="number" step="1" min="0" id="TRANSIENT" name="TRANSIENT" value="500"></p>
+        <p>Iterations: <input type="number" step="1" min="0" id="ITER" name="ITER" value="100"></p>
+        <button id="compu">Compute</button>
+      </div>
+    </div>
+    <div id="range"></div>
     <canvas id="world" width="100%" height="100%"></canvas>
     <!-- <div id="progress"></div> -->
     <script type="text/javascript" src="{{ "/js/logistic.js" | relative_url }}" >
