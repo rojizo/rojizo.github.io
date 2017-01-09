@@ -171,24 +171,26 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     }
   }
   
-  if(typeof(WORLD.data('AMAX')) !== 'undefined'){
-    WORLD.data('pile').push({
-      'AMAX': WORLD.data('AMAX'), 'AMIN': WORLD.data('AMIN'),
-      'XMAX': WORLD.data('XMAX'), 'XMIN': WORLD.data('XMIN'),
-      'TRANSIENT': WORLD.data('TRANSIENT'),
-      'ITER': WORLD.data('ITER')
-    });
-  }
+  WORLD.data('imgWOgui', CX.getImageData(0, 0, WORLD.width(), WORLD.height()));
   
-  WORLD.data({ 
-    'imgWOgui': CX.getImageData(0, 0, wWidth, wHeight),
-    'AMAX': AMAX, 'AMIN': AMIN,
-    'XMAX': XMAX, 'XMIN': XMIN,
-    'TRANSIENT': $('#TRANSIENT').val(), 'ITER': $('#ITER').val()
-  });
-  
-  $('#range').html('a ∈ [' + AMIN + ', ' + AMAX + '] &nbsp;&nbsp;&nbsp;' + 
-                   'x ∈ [' + XMIN + ', ' + XMAX + ']');
+  // if(typeof(WORLD.data('AMAX')) !== 'undefined'){
+  //   WORLD.data('pile').push({
+  //     'AMAX': WORLD.data('AMAX'), 'AMIN': WORLD.data('AMIN'),
+  //     'XMAX': WORLD.data('XMAX'), 'XMIN': WORLD.data('XMIN'),
+  //     'TRANSIENT': WORLD.data('TRANSIENT'),
+  //     'ITER': WORLD.data('ITER')
+  //   });
+  // }
+  //
+  // WORLD.data({
+  //   'imgWOgui': CX.getImageData(0, 0, wWidth, wHeight),
+  //   'AMAX': AMAX, 'AMIN': AMIN,
+  //   'XMAX': XMAX, 'XMIN': XMIN,
+  //   'TRANSIENT': $('#TRANSIENT').val(), 'ITER': $('#ITER').val()
+  // });
+  //
+  // $('#range').html('a ∈ [' + AMIN + ', ' + AMAX + '] &nbsp;&nbsp;&nbsp;' +
+  //                  'x ∈ [' + XMIN + ', ' + XMAX + ']');
 }
 
 ////////////////////////////////////////////////////////////////
