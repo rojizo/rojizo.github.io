@@ -1,0 +1,6 @@
+[submodule "stuff/js_moran"]
+	path = stuff/js_moran
+	url = https://bitbucket.org/alvarolozano/js_moran.git
+[submodule "stuff/fpExplorer"]
+	path = stuff/fpExplorer
+	url = https://github.com/rojizo/fpExplorer.git
