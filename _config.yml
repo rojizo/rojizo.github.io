@@ -69,6 +69,6 @@ staticman :
   allowedFields : ['name', 'comment']
 
 # Gems
-gems :
+plugins :
   - jekyll-redirect-from
   - jekyll-paginate
