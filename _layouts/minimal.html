@@ -20,17 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
     <!-- Custom styles for this template -->
     <link href="/css/main.css" rel="stylesheet" />
-
-    {% for script in page.scripts %}
-      <script src="{{ script | prepend: '/js/' | relative_url }}"></script>
-    {% endfor %}
-    {% for script in page.CDNs %}
-      <script src="{{ script }}"></script>
-    {% endfor %}
     
-    {% if page.mathjax %}
-    {% include mathjax.html %}
-    {% endif %}
   </head>
 
   <body id="page-top">
@@ -40,5 +30,14 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    {% for script in page.scripts %}
+      <script src="{{ script | prepend: '/js/' | relative_url }}"></script>
+    {% endfor %}
+    {% for script in page.CDNs %}
+      <script src="{{ script }}"></script>
+    {% endfor %}
+    {% if page.mathjax %}
+    {% include mathjax.html %}
+    {% endif %}
   </body>
 </html>

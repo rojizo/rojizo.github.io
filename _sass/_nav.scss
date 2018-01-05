@@ -4,6 +4,16 @@
     font-weight: 600;
     text-transform: uppercase;
   }
+  .languages {
+    border-top: 2px solid rgba(0,0,0,.3);
+    text-align: center;
+    a.nav-link {
+      margin: 0.5rem;
+      width: 24%;
+      display: inline-block !important;
+      text-transform: uppercase;
+    }
+  }
 }
 
 @media (min-width: 992px) {

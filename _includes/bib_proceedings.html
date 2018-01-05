@@ -11,7 +11,7 @@
     In
   {% endif %}
 </span>
-<span class="booktitle">{{ bibitem.booktitle }}</span>,
+<span class="booktitle">{{ bibitem.booktitle }}</span>{% if bibitem.editors %}{% include bib_patch_editors.html %}{% endif %},
 {% if bibitem.serie %}
   <span class="serie">{{bibitem.serie}}</span>{% if bibitem.vol %}
     <span class="vol">{{bibitem.vol}}</span>{% endif %},
@@ -20,13 +20,13 @@
   <span class="editorial">{{bibitem.editorial}}</span>,
 {% endif %}
 <span class="year">{{bibitem.year}}</span>.
+{% if bibitem.isbn %}
+  <span class="isbn">{{bibitem.isbn}}</span>.
+{% endif %}
 {% if bibitem.doi %}
   <a href="https://doi.org/{{bibitem.doi}}">doi&nbsp;{{bibitem.doi}}</a>.
 {% endif %}
 {% if bibitem.arxiv %}
   <a href="https://arxiv.org/abs/{{bibitem.arxiv}}">arXiv&nbsp;{{bibitem.arxiv}}</a>
-{% endif %}
-{% if bibitem.isbn %}
-  <span class="isbn">{{bibitem.isbn}}</span>.
 {% endif %}
 </span>

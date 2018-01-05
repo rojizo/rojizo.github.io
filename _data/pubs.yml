@@ -1,3 +1,60 @@
+- title: An accurate database of the fixation probabilities for all undirected graphs of order 10 or less
+  tags: research
+  kind: proceedings
+  booktitle: Bioinformatics and Biomedical Engineering. IWBBIO 2017
+  editors:
+    - name: Rojas, I.
+    - name: Ortuño, F.
+  serie: Lecture Notes in Computer Science
+  vol: 10209
+  year: 2017
+  page: 209-220
+  isbn: 978-3-319-56153-0
+  doi: 10.1007/978-3-319-56154-7_20
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+    - name: Vigara Benito, Rubén
+
+- title: Banchoff’s sphere and branched covers over the trefoil
+  tags: research
+  kind: article
+  authors:
+    - name: Lozano Rojo, Álvaro
+    - name: Vigara Benito, Rubén
+  journal: RACSAM
+  year: 2018
+  doi: 10.1007/s13398-017-0477-5
+  url: https://link.springer.com/epdf/10.1007/s13398-017-0477-5?author_access_token=nYKkTaKNDsbdvuOPemA2n_e4RwlQNchNByi7wbcMAY4vhRJ04tEvwocitW0W3GA_pX-MEi2DceXMvVNy7-hdibEqzo9O-oDwCcBBpUc88a9JY0jzKExtK599MUzP_qo6LmDmRqaovzjAJ36VNihbTg%3D%3D
+
+- title: Supressors of selection
+  tags: research
+  kind: article
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+  journal: PLOS ONE
+  vol: 12
+  num: 7
+  year: 2017
+  pages: e0180549
+  doi: 10.1371/journal.pone.018054910.1371
+
+- title:  A method for validating Rent’s rule for technological and biological networks
+  tags: research
+  kind: article
+  journal: Scientific Reports
+  vol: 7
+  pages: 5378
+  year: 2017
+  doi: 10.1038/s41598-017-05670-w
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+
 - title: An example of non-uniquely ergodic lamination
   tags: research
   kind: article

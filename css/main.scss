@@ -12,17 +12,44 @@
 @import "resume-item.scss";
 @import "bootstrap-overrides.scss";
 @import "bib";
-// Components
 
 
-.languages {
-  border-top: 2px solid rgba(0,0,0,.3);
-  text-align: center;
-  a.nav-link {
-    margin: 0.5rem;
-    width: 24%;
-    display: inline-block !important;
-    text-transform: uppercase;
+
+// Box shadow helper
+@mixin BoxShadowHelper($level: 1){
+  @if $level == 1 {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 1px 4px 0 rgba(0, 0, 0, .12);
+  }
+  @if $level == 2 {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 8px 0 rgba(0, 0, 0, .15);
   }
 }
 
+
+.card {
+  @include BoxShadowHelper(1);
+  overflow: hidden;
+  transition: .25s box-shadow;
+  &:focus,
+  &:hover {
+    @include BoxShadowHelper(2);
+  }
+  .card-title {
+    border-bottom: 1px solid $secondary;
+  }
+  .readmore {
+    text-decoration: none !important;
+    h5 {
+      transition: .25s;
+    }
+    &:hover h5,
+    &:focus h5 {
+      color: $primary;
+    }
+  }
+}
+
+.card-columns {
+  orphans: 1 !important; 
+  widows: 1 !important;
+}

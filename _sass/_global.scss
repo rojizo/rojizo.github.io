@@ -42,12 +42,12 @@ h2 {
 
 .list-social-icons {
   a {
-    color: $gray-700;
+    color: $secondary;
     &:hover {
       color: $primary;
     }
     .fa-lg {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
   }
 }

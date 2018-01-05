@@ -1,0 +1,14 @@
+{% if bibitem.editors.size == 1 or bibitem.editors.size > 4 
+%}{% assign author = bibitem.editors | first %}
+(<span class="editor">{% 
+    assign name = author.name | split: ',' %}{% 
+    assign words = name | last | strip | split: ' ' %}{% 
+      for word in words %}{{ word | truncate: 2, '.' }}&nbsp;{% 
+    endfor 
+  %}{{ name | first }}{% if bibitem.editors.size > 2 %}
+    <em>et&nbsp;al</em>{% endif %}</span>{% else %}
+{% for author in bibitem.editors %}{% if forloop.first %}{% else %}, 
+{% endif %}<span class="editor">{% assign name = author.name | split: ',' %}{% 
+  assign words = name | last | strip | split: ' ' %}{% 
+    for word in words %}{{ word | truncate: 2, '.' }}&nbsp;{% 
+    endfor %}{{ name | first }}</span>{% endfor %}{% endif %} Eds.)
