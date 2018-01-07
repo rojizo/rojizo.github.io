@@ -47,8 +47,7 @@ function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     var map = func(a);
     var finalSet = new Set();
     var mySet = new Set();
-    var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
-//    console.log(posa);
+    var posa = (a - AMIN)/pA * wWidth;
     mySet.add(Math.random() * pX + XMIN);
     
     // Transient
@@ -84,7 +83,7 @@ function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
       
       for(let y of mySet) 
         if( (y <= XMAX) && (y >= XMIN) ){
-          var posx = (1 - (y - XMIN)/pX) * (wHeight - 20) + 10;
+          var posx = (1 - (y - XMIN)/pX) * wHeight;
           CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
         }
       
@@ -94,7 +93,7 @@ function iDrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     
     for(let y of finalSet) 
       if( (y <= XMAX) && (y >= XMIN) ){
-        var posx = (1 - (y - XMIN)/pX) * (wHeight - 20) + 10;
+        var posx = (1 - (y - XMIN)/pX) * wHeight;
         CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
       }
     
@@ -139,8 +138,8 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
   document.querySelector("#world").width = WORLD.width();
   document.querySelector("#world").height = WORLD.height();
 
-  //iDrawBifurcation(AMIN, AMAX, XMIN, XMAX);
-
+  if($("#INV").is(":checked"))
+    iDrawBifurcation(AMIN, AMAX, XMIN, XMAX);
   
   CX.fillStyle = color;
   
@@ -155,7 +154,7 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
   for(var a=AMIN; a<=AMAX; a+=ASTEP) {
     var map = func(a);
     var x = Math.random() * pX + XMIN;
-    var posa = (a - AMIN)/pA * (wWidth - 20) + 10;
+    var posa = (a - AMIN)/pA * wWidth;
     
     // Transient
     for(var i=$('#TRANSIENT').val(); i>0; i--) {
@@ -168,7 +167,7 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
     for(var i=$('#ITER').val(); i>0; i--) {
       x = map(x);
       if( (x <= XMAX) && (x >= XMIN) ){
-        var posx = (1 - (x - XMIN)/pX) * (wHeight - 20) + 10;
+        var posx = (1 - (x - XMIN)/pX) * wHeight;
         CX.fillRect(posa-RADIUS, posx-RADIUS, 2*RADIUS, 2*RADIUS);
       }
     }
@@ -200,8 +199,8 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
 // Events Handlers                                            //
 ////////////////////////////////////////////////////////////////
 function mouseup(e) {
-  if(this !== e.target) 
-    return
+  if(this !== e.target) return;
+  if(WORLD.data('inipos') === null) return;
   
   e.preventDefault();
   
@@ -220,12 +219,16 @@ function mouseup(e) {
     // Ok now compute the things
     var corner0 = WORLD.data('inipos');
     
-    if(WORLD.data('inipos').x > e.clientX) {
-      _AMAX = (WORLD.data('inipos').x - 10) * pA / (wWidth - 20) + AMIN;
-      _AMIN = (e.clientX - 10) * pA / (wWidth - 20) + AMIN;
+    // Transform position
+    var tpos = {x:e.pageX - $(this).offset().left, 
+                y:e.pageY - $(this).offset().top};
+    
+    if(WORLD.data('inipos').x > tpos.x) {
+      _AMAX = WORLD.data('inipos').x * pA / wWidth + AMIN;
+      _AMIN = tpos.x * pA / wWidth + AMIN;
     } else if(WORLD.data('inipos').x < e.clientX) {
-      _AMAX = (e.clientX - 10) * pA / (wWidth - 20) + AMIN;
-      _AMIN = (WORLD.data('inipos').x - 10) * pA / (wWidth - 20) + AMIN;
+      _AMAX = tpos.x * pA / wWidth + AMIN;
+      _AMIN = WORLD.data('inipos').x * pA / wWidth + AMIN;
     } else {
       CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
       WORLD.data('dragging', false);
@@ -234,11 +237,11 @@ function mouseup(e) {
     }
     
     if(WORLD.data('inipos').y > e.clientY) {
-      _XMIN = (1 - (WORLD.data('inipos').y - 10) / (wHeight - 20)) * pX + XMIN;
-      _XMAX = (1 - (e.clientY - 10) / (wHeight - 20)) * pX + XMIN;
+      _XMIN = (1 - WORLD.data('inipos').y / wHeight) * pX + XMIN;
+      _XMAX = (1 - tpos.y / wHeight) * pX + XMIN;
     } else if(WORLD.data('inipos').y < e.clientY) {
-      _XMAX = (1 - (WORLD.data('inipos').y - 10) / (wHeight - 20)) * pX + XMIN;
-      _XMIN = (1 - (e.clientY - 10) / (wHeight - 20)) * pX + XMIN;
+      _XMAX = (1 - WORLD.data('inipos').y / wHeight) * pX + XMIN;
+      _XMIN = (1 - tpos.y / wHeight) * pX + XMIN;
     } else {
       CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
       WORLD.data('dragging', false);
@@ -259,21 +262,29 @@ function mousemove(e) {
   e.preventDefault();
   var corner = WORLD.data('inipos');
   if( corner !== null ) {
+    // Transform position
+    var tpos = {x:e.pageX - $(this).offset().left, 
+                y:e.pageY - $(this).offset().top};
+    
     WORLD.data('dragging', true);
     CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
     CX.fillStyle = "rgba(204, 204, 255, 0.3)";
-    CX.fillRect(corner.x, corner.y, e.clientX - corner.x, e.clientY - corner.y);
+    CX.fillRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
     CX.lineWidth = 2;
     CX.strokeStyle = "#CCF";
-    CX.strokeRect(corner.x, corner.y, e.clientX - corner.x, e.clientY - corner.y);
+    CX.strokeRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
   }
 }
 
 function mousedown(e) {
-  if(this !== e.target) 
-    return;
+  if(WORLD.data('inipos') !== null) return; 
+  if(this !== e.target) return;
+  
   e.preventDefault();
-  WORLD.data('inipos', {x:e.clientX, y:e.clientY});
+  // Transform position
+  var tpos = {x:e.pageX - $(this).offset().left, 
+              y:e.pageY - $(this).offset().top};
+  WORLD.data('inipos', tpos);
 }
 
 function dblclick(e){
@@ -312,8 +323,6 @@ $(document).ready(function() {
   // Event handlers
   WORLD.on('mousedown', mousedown).on('mouseup', mouseup)
     .on('mousemove', mousemove).on('dblclick', dblclick);
-  $('#tools_container').on('mouseup', mouseup).on('mousemove', mousemove)
-    .on('mousedown', mousedown).on('dblclick', dblclick);
   
   $('#compu').on('click',function(e){
     DrawBifurcation(WORLD.data('AMIN'), WORLD.data('AMAX'),
@@ -322,8 +331,6 @@ $(document).ready(function() {
   
   // First draw
   DrawBifurcationAndUpdate(0, 4, 0, 1);
-  
-  
   
   //Resize event
   var timer;
@@ -334,6 +341,20 @@ $(document).ready(function() {
         WORLD.data('XMIN'), WORLD.data('XMAX'))
     }, 500);
   });
+  
+  // Sliders
+  var funcEL = document.querySelector('#func');
+  var func = function(e) {
+    plot(funcEL, function(x) {return x;}, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'red', lineWidth: 1.5, steps: 1, axes:true},
+      true
+    );
+    plot(funcEL, function(x) {return e.value*x*(1-x);}, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 50, xmin:0, xmax:1}
+    );
+  }
+  func({value: $('.slider').slider().slider('getValue')});
+  $('#valA').on('slide', func);
 });
 
 

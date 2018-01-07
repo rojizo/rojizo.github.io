@@ -59,10 +59,10 @@ defaults:
     values:
       blog: re
       permalink: /randomexperiments/:year/:slug/
-      
+  
 
 # Blog stuff
-paginate : 4
+# paginate : 4
 
 # Staticman
 staticman :
