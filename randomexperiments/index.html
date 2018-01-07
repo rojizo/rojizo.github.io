@@ -2,22 +2,35 @@
 layout: page
 ---
 <div class="home">
+  <h2 class="text-primary mb-5">Random experiments</h2>
 
-  <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.blog == "re" %}
-      <li> 
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+<div class="row">
+  <div class="card-columns">
+{% for post in site.posts %}{% if post.blog == "re" %}
+    <article class="card shadow">
+      <a href="{{ post.url | prepend: site.baseurl }}">
+      <img class="card-img-top img-fluid" src="{{ post.icon | prepend: '/img/' | relative_url }}" alt="{{ post.title }}">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">{{ post.title }}</h3>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="readmore d-flex flex-row-reverse">
+          <h5>Read more <i class="fa fa-chevron-right"></i></h5>
+        </a>
+      </div>
+      <div class="card-footer text-center">
+        <small class="text-muted">
+          <i class="fa fa-clock-o"></i> {{ post.date | date: "%b %-d, %Y" }}
+          | <i class="fa fa-comments-o"></i> 0
+        </small>
+      </div>
+    </article>
+{% endif %}{% endfor %}
+</div>
+</div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+<!--  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+-->
+  
 </div>
