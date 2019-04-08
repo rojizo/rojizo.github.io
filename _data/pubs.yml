@@ -1,3 +1,18 @@
+- title: Evolutionary regime transitions in structured populations.
+  tags: research
+  kind: article
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+  journal: PLOS ONE
+  vol: 13
+  num: 11
+  year: 2018
+  pages: e0200670
+  doi: 10.1371/journal.pone.0200670
+
+
 - title: An accurate database of the fixation probabilities for all undirected graphs of order 10 or less
   tags: research
   kind: proceedings
