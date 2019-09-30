@@ -24,11 +24,11 @@ scripts: ['simpleplot.js', 'logistic.js']
 </p>
 
 <p>
-  The evolution depends heavily on \(a\). Forget about \(a=0\), everything 
+  The evolution heavily depends on \(a\). Forget about \(a=0\), because everything 
   dies in one time step. If \(0 < a < 1\) all the bacteria will eventually die,
   since in each step we have less individuals than before. In fact, the 
   population exponentially goes down to \(0\). Mathematically, the population 
-  will never reach \(0\) unless it start at \(0\), but the model says that the 
+  will never reach \(0\) unless it starts at \(0\), but the model says that the 
   population is doomed. If \(a=1\), the population is constant over time.
   Finally, if \(a>1\) the population grows exponentially without limit, it will 
   quickly reach the maximal amount of bacteria the petri dish can sustain. Since 
@@ -38,8 +38,8 @@ scripts: ['simpleplot.js', 'logistic.js']
 <p>
   To add this behavior to out model we replace the variable \(X\) by a the 
   relative variable \(x\in[0,1]\) where \(1\) is the maximal population the 
-  petri dish can support. We chose a simple model for the evolution of the 
-  population
+  petri dish can support. We consider a simple model (the logistic model) for 
+  the evolution of the population
   \[
     f(x) = a\,x\,(1-x),
   \]
