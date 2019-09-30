@@ -1,0 +1,18 @@
+---
+layout: titleless
+css: ["chapters.css"]
+---
+
+{% case page.language %}
+  {% when 'es' %}
+    {% assign chapName = 'Capítulo' %}
+  {% else %}
+    {% assign chapName = 'Chapter' %}
+{% endcase %}
+
+<div class="chapter" style="counter-reset: chapcounter {{ page.number }}">
+<h1 class="mb-5">{{ chapName }} {{ page.number }}&#x0000a0;&#x0000a0;<span class="text-primary">{{ page.title }}</span></h1>
+{{ content }}
+</div>
+
+

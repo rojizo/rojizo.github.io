@@ -1,0 +1,35 @@
+---
+---
+// Core variables and mixins
+@import "variables.scss";
+@import "mixins.scss";
+
+.chapter {
+  h1 {
+    counter-reset: seccounter;
+    text-transform: none;
+  }
+  
+  h2 {
+    color: $primary;
+    text-transform: none;
+  }
+
+  h2:before {
+    color: $header-color;
+    content: /*"\00A7"*/counter(chapcounter)"."counter(seccounter)"\0000a0\0000a0";
+    counter-increment: seccounter;
+    counter-reset: subseccounter;
+  }
+
+  h3 {
+    color: $primary;
+    text-transform: none;
+  }
+
+  h3:before {
+    color: $header-color;
+    content: counter(chapcounter)"."counter(seccounter)"."counter(subseccounter)"\0000a0\0000a0";
+    counter-increment: subseccounter;
+  }
+}

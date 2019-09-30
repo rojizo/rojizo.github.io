@@ -1,15 +1,15 @@
 ---
 layout: chapter
 title: Estadística descriptiva
-number: 2
+number: 1
 mathjax: true
+chartjs: true
 ---
 
 <h2>Los datos</h2>
 
 <p>
   Queremos estudiar la relación entre algunos factores 
-  
 </p>
 
 
@@ -47,7 +47,40 @@ mathjax: true
 
 <h2>Resumiendo los datos</h2>
 
-Tablas y algunos gráficos
+<h3>Frecuencias, tartas y barras</h3>
+
+<p>
+  Supongamos que contamos con una muestra $\{x_i\}_{i=1}^N$. Definimos la 
+  <em>frecuencia</em> del valor $x_i$ como el número de elementos de la muestra 
+  iguales a $x_i$. Así, para cada posible valor de la muestra (sin repeticiones)
+  tenemos una frecuecia con la que podríamos construir una tabla.
+</p>
+
+<p>
+  Pensemos en el ejemplo
+</p>
+<p class="center">
+  <canvas id="myChart"></canvas>
+  <script>
+    
+    new Chart(document.getElementById("myChart"),{"type":"doughnut","data":{"labels":["Red","Blue","Yellow"],"datasets":[{"label":"My First Dataset","data":[300,50,100],"backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]}});
+    
+    var ctx = document.getElementById('myChart').getContext('2d');
+    // var chart = new Chart(ctx, {
+    //     // The type of chart we want to create
+    //     type: 'pie',
+    //     data: {
+    //       // The data for our dataset
+    //       datasets: [{
+    //         data: [0, 10, 5, 2, 20, 30, 45]
+    //       }],
+    //       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //       // Configuration options go here
+    //       options: {}
+    //     }
+    // });
+  </script>
+</p>
 
 
 
