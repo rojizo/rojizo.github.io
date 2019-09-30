@@ -6,6 +6,7 @@
 var RADIUS = .25;
 var WORLD;
 var CX;
+var LISTG;
 
 ////////////////////////////////////////////////////////////////
 // Logistic map                                               //
@@ -267,6 +268,8 @@ function mousemove(e) {
                 y:e.pageY - $(this).offset().top};
     
     WORLD.data('dragging', true);
+    
+    CX.clearRect(0,0,WORLD.width(),WORLD.height());
     CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
     CX.fillStyle = "rgba(204, 204, 255, 0.3)";
     CX.fillRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
@@ -344,17 +347,63 @@ $(document).ready(function() {
   
   // Sliders
   var funcEL = document.querySelector('#func');
-  var func = function(e) {
+  var func = function() {
     plot(funcEL, function(x) {return x;}, 
       {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'red', lineWidth: 1.5, steps: 1, axes:true},
       true
     );
-    plot(funcEL, function(x) {return e.value*x*(1-x);}, 
-      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 50, xmin:0, xmax:1}
+    
+    var f = function(x) {return $('#valA').slider('getValue')*x*(1-x);};
+    //var xx = function(x) {return g(g(x));};
+    plot(funcEL, f, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 500, xmin:0, xmax:1}
+    );
+    
+    var XN = $('#valX0').slider('getValue');
+    var XN1; 
+    var list = [[XN,0]];
+    for(var i=0; i<100; i++) {
+      var XN1 = f(XN);
+      list.push([XN,XN1]);
+      list.push([XN1,XN1]);
+      XN = XN1;
+    }
+    list_plot(funcEL, list, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'black', lineWidth: 1}
     );
   }
-  func({value: $('.slider').slider().slider('getValue')});
-  $('#valA').on('slide', func);
+  $('#valA').slider().on('slide', func);
+  $('#valX0').slider().on('slide', func);
+  func();
+  
+  
+  // Iterations
+  // Sliders
+  var funcEL2 = document.querySelector('#funcs');
+  var funcs = function() {
+    plot(funcEL2, function(x) {return x;}, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'red', lineWidth: 1.5, steps: 1, axes:true},
+      true
+    );
+    
+    var g = function(x) {return $('#valA2').slider('getValue')*x*(1-x);};
+    var f = function(x) {
+      var ret = x;
+      var n = $('#valn').slider('getValue');
+      for(var i=0; i<n; i++) {
+        x = g(x);
+      }
+      return x;
+    };
+    plot(funcEL2, f, 
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 100, xmin:0, xmax:1}
+    );
+  }
+  $('#valA2').slider().on('slide', funcs);
+  $('#valn').slider().on('slide', funcs);
+  funcs();
+  
+  
 });
 
 
