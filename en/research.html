@@ -24,17 +24,17 @@ icon: research.png
 {% assign books = books | sort: 'year' %}
 {% assign others = others | sort: 'year' %}
 
-<h3>Books</h3>
+<h2>Books</h2>
 <ol>{% for bibitem in books reversed %}
   <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
 {% endfor %}</ol>
 
-<h3>Papers</h3>
+<h2>Papers</h2>
 <ol>{% for bibitem in papers reversed %}
   <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
 {% endfor %}</ol>
 
-<h3>Other publications</h3>
+<h2>Other publications</h2>
 <ol>{% for bibitem in others reversed %}
   <li>{% include {{ bibitem.kind | prepend: 'bib_' | append: '.html' }} %}</li>
 {% endfor %}</ol>

@@ -32,8 +32,11 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$dark:          $gray-900 !default;
 
 // Page Variables
+
+$text-color: $dark;
+$header-color: $gray-700 !default;
 
 $sidebar-base-width: 17rem;

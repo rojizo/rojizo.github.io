@@ -2,13 +2,14 @@
   MathJax.Hub.Config({
     showMathMenu: false,
     jax: ["input/TeX","output/CommonHTML"],
-    extensions: ["tex2jax.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+    extensions: ["tex2jax.js","AssistiveMML.js"],
     TeX: {
       equationNumbers: { autoNumber: "AMS" },
       extensions: ["AMSmath.js","AMSsymbols.js"]
     },
     tex2jax: {
       inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      displayMath: [ ['$$', '$$'] ],
       processRefs: true
     },
     "HTML-CSS": { 
@@ -20,5 +21,6 @@
 </script>
 
 <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js">
 </script>
+

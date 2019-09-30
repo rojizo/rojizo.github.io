@@ -15,7 +15,24 @@
 
 
 
-#mainContent { font-size: 1.1rem;}
+#mainContent { font-size: 1.2rem; }
+
+.chapter h1:before {
+  counter-reset: seccounter;
+}
+
+.chapter h2 {
+  color: $primary;
+}
+
+.chapter h2:before {
+  color: $header-color;
+  content: "\00A7"counter(chapcounter)"."counter(seccounter)".\0000a0\0000a0";
+  counter-increment: seccounter;
+  counter-reset: subseccounter;
+  
+}
+
 
 // Slider bootstrap4 correction
 .slider.slider-horizontal:hover,

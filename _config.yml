@@ -40,6 +40,8 @@ navigation:
       name: Inicio
     - url: /es/research
       name: Investigación
+#    - url: /es/docencia
+#      name: Docencia
     - url: /randomexperiments
       name: Random Experiments
     
