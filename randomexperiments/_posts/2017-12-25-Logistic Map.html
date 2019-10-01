@@ -1,0 +1,133 @@
+---
+layout: repost
+title: 'The logistic map'
+icon: logistic.png
+mathjax: true
+excerpt_separator: <!--more-->
+scripts: ['simpleplot.js', 'logistic.js']
+---
+
+<p>
+  Consider a petri dish with a few bacteria. 
+  They clone themselves at a constant rate over time, and in the same amount of 
+  time a fraction of them die.
+  <!--more-->
+  So, if we start with \(X_0\) bacteria, 
+  after a fixed time (a day, a week or any reasonable period of time), the 
+  population is
+  \[
+    X_1 = a\,X_0,
+  \]
+  where \(a\) accounts for the death, newborn and surviving individuals. 
+  Of course, after another time step the population is 
+  \(X_2 = a\,X_1=a^2\,X_0\). Continuing in this way we see that the
+  population at time step \(n\) is \(X_n = a^n\,X_0\), which are just iterations
+  of \(X\mapsto a\,X\).
+</p>
+
+<p>
+  The evolution heavily depends on \(a\). Forget about \(a=0\), because everything 
+  dies in one time step. If \(0 < a < 1\) all the bacteria will eventually die,
+  since in each step we have less individuals than before. In fact, the 
+  population exponentially goes down to \(0\). Mathematically, the population 
+  will never reach \(0\) unless it starts at \(0\), but the model says that the 
+  population is doomed. If \(a=1\), the population is constant over time.
+  Finally, if \(a>1\) the population grows exponentially without limit, it will 
+  quickly reach the maximal amount of bacteria the petri dish can sustain. Since 
+  the environment cannot nourish all of them some would die from starvation.
+</p>
+
+<p>
+  To add this behavior to out model we replace the variable \(X\) by a the 
+  relative variable \(x\in[0,1]\) where \(1\) is the maximal population the 
+  petri dish can support. We consider a simple model (the logistic model) for 
+  the evolution of the population
+  \[
+    f(x) = a\,x\,(1-x),
+  \]
+  where \(a\) is a parameter related with both birth and dead rates.
+  Hence, starting from a population of \(x_0\), the population evolves as 
+  \(x_n = f(x_{n-1})\). The graph of the function \(f\) is drawn in blue below.
+  The identity map \(x\mapsto x\) is plotted in red. The intersection of both 
+  are the fixed points of the system. You can also see the orbit (up to 100 
+  iterations) of a initial condition \(x_0\).
+</p>
+
+<p class="text-center">
+  \(a\): <input class="slider" id="valA" data-slider-tooltip="always" data-slider-id='valASlider' type="text" data-slider-min="0" data-slider-max="4" data-slider-step="0.01" data-slider-value="1"/>
+<p>
+<p class="text-center">
+  \(x_0\): <input class="slider" id="valX0" data-slider-tooltip="always" data-slider-id='valX0Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.01" data-slider-value="0.5"/>
+<p>
+
+<div class="row">
+  <div class="offset-1 col-10 col-sm-6 offset-sm-3 col-md-4 offset-md-4">
+    <canvas id="func" width="400px" height="400px" style="width:100%"></canvas>
+  </div>
+</div>
+
+<p>
+  The dynamics are quite wild! Why are the orbits wander around and not going 
+  to the fixed points? Because there are other attractors, the periodic points 
+  of \(f\), i.e., the fixed points of \(f^n\). 
+  Take a look to them... Specially interesting is the 
+  <a href="https://en.wikipedia.org/wiki/Sharkovskii's_theorem">case $n=3$</a>.
+</p>
+
+<p class="text-center">
+  \(a\): <input class="slider" id="valA2" data-slider-tooltip="always" data-slider-id='valA2Slider' type="text" data-slider-min="0" data-slider-max="4" data-slider-step="0.01" data-slider-value="1"/>
+<p>
+<p class="text-center">
+  \(n\): <input class="slider" id="valn" data-slider-tooltip="always" data-slider-id='valnSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>
+<p>
+
+<div class="row">
+  <div class="offset-1 col-10 col-sm-6 offset-sm-3 col-md-4 offset-md-4">
+    <canvas id="funcs" width="400px" height="400px" style="width:100%"></canvas>
+  </div>
+</div>
+
+
+<p>
+  To visualize this we can plot a <em>bifurcation diagram</em>:
+  the diagram below shows the attractors of the system (stable 
+  points where the iteration converges, drawn in black) for \(a\in[0,4]\).
+</p>
+
+<div class="row mb-3">
+  <div class="col-6 col-md-4 col-xl-3 offset-md-1">
+    <div class="input-group">
+      <span class="input-group-addon" id="transient-addon">Transient</span>
+      <input type="number" class="form-control" 
+        step="50" min="0" id="TRANSIENT" name="TRANSIENT" value="200"
+        placeholder="Transient" aria-label="Transient" aria-describedby="transient-addon">
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-xl-3">
+    <div class="input-group">
+      <span class="input-group-addon" id="iter-addon">Iterations</span>
+      <input type="number" class="form-control" 
+        step="10" min="1" id="ITER" name="ITER" value="50"
+        placeholder="Iterations" aria-label="Iterations" aria-describedby="iter-addon">
+    </div>
+  </div>
+  <div class="col-6 col-md-2 col-xl-2">
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="INV" id="INV"> Inverse
+      </label>
+    </div>
+  </div>
+  <div class="col-6 col-md-11 col-xl-2 mt-2 mt-xl-0">
+    <button id="compu" class="float-right btn btn-primary">Compute</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-10 offset-md-1">
+    <canvas id="world" width="640px" height="480px" style="border: 1px solid gray; width:100%"></canvas>
+    <div id="range"></div>
+  </div>
+</div>
+
+

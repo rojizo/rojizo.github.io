@@ -203,9 +203,8 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
 ////////////////////////////////////////////////////////////////
 function mouseup(e) {
   if(this !== e.target) return;
+  if(!WORLD.data('mousedown')) return;
   if(WORLD.data('inipos') === null) return;
-  
-  e.preventDefault();
   
   var AMAX = WORLD.data('AMAX');
   var AMIN = WORLD.data('AMIN');
@@ -254,48 +253,53 @@ function mouseup(e) {
     
     DrawBifurcationAndUpdate(_AMIN, _AMAX, _XMIN, _XMAX);
   }
-  WORLD.data('dragging', false);
   WORLD.data('inipos', null);
+  WORLD.data('mousedown', false);
+  WORLD.data('dragging', false);
 }
 
 function mousemove(e) {
-  if(this !== e.target) 
-    return;
+  if(this !== e.target) return;
   
-  e.preventDefault();
-  var corner = WORLD.data('inipos');
-  if( corner !== null ) {
+  if(WORLD.data('mousedown')) {
+    var corner = WORLD.data('inipos');
     // Transform position
-    var tpos = {x:e.pageX - $(this).offset().left, 
+    var tpos = {x:e.pageX - $(this).offset().left,
                 y:e.pageY - $(this).offset().top};
     
-    WORLD.data('dragging', true);
+    if(!WORLD.data('dragging')) {
+      if( (tpos.x - corner.x)*(tpos.y - corner.y) ) { // Add some little movement
+        WORLD.data('dragging', true);
+      }
+    }
     
-    CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
-    CX.fillStyle = "rgba(204, 204, 255, 0.3)";
-    CX.fillRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
-    CX.lineWidth = 2;
-    CX.strokeStyle = "#CCF";
-    CX.strokeRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
+    if(WORLD.data('dragging')) {
+      CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
+      CX.fillStyle = "rgba(204, 204, 255, 0.3)";
+      CX.fillRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
+      CX.lineWidth = 2;
+      CX.strokeStyle = "#CCF";
+      CX.strokeRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
+    }
   }
 }
 
 function mousedown(e) {
-  if(WORLD.data('inipos') !== null) return; 
   if(this !== e.target) return;
+
+  WORLD.data("mousedown", true);
+  if(WORLD.data('inipos') !== null) return;
   
-  e.preventDefault();
   // Transform position
-  var tpos = {x:e.pageX - $(this).offset().left, 
+  var tpos = {x:e.pageX - $(this).offset().left,
               y:e.pageY - $(this).offset().top};
   WORLD.data('inipos', tpos);
 }
 
 function dblclick(e){
-  if(this !== e.target) 
-    return;
-
-  e.preventDefault();
+  if(this !== e.target) return;
+  if(WORLD.data('dragging')) return;
+  
   if(WORLD.data('pile').length != 0) {
     var params = WORLD.data('pile').pop();
     
@@ -325,8 +329,10 @@ $(document).ready(function() {
   WORLD.data('pile', []);
   
   // Event handlers
-  WORLD.on('mousedown', mousedown).on('mouseup', mouseup)
-    .on('mousemove', mousemove).on('dblclick', dblclick);
+  WORLD.dblclick(dblclick);
+  WORLD.mousedown(mousedown);
+  WORLD.mouseup(mouseup);
+  WORLD.mousemove(mousemove);
   
   $('#compu').on('click',function(e){
     DrawBifurcation(WORLD.data('AMIN'), WORLD.data('AMAX'),
@@ -345,6 +351,7 @@ $(document).ready(function() {
         WORLD.data('XMIN'), WORLD.data('XMAX'))
     }, 500);
   });
+  
   
   // Sliders
   var funcEL = document.querySelector('#func');
@@ -402,7 +409,6 @@ $(document).ready(function() {
   $('#valA2').slider().on('slide', funcs);
   $('#valn').slider().on('slide', funcs);
   funcs();
-  
   
 });
 
