@@ -8,6 +8,8 @@ var WORLD;
 var CX;
 var LISTG;
 
+var samplePerN = {1:50, 2:100};
+
 ////////////////////////////////////////////////////////////////
 // Logistic map                                               //
 ////////////////////////////////////////////////////////////////
@@ -269,7 +271,6 @@ function mousemove(e) {
     
     WORLD.data('dragging', true);
     
-    CX.clearRect(0,0,WORLD.width(),WORLD.height());
     CX.putImageData(WORLD.data('imgWOgui'), 0, 0);
     CX.fillStyle = "rgba(204, 204, 255, 0.3)";
     CX.fillRect(corner.x, corner.y, tpos.x - corner.x, tpos.y - corner.y);
@@ -354,7 +355,6 @@ $(document).ready(function() {
     );
     
     var f = function(x) {return $('#valA').slider('getValue')*x*(1-x);};
-    //var xx = function(x) {return g(g(x));};
     plot(funcEL, f, 
       {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 500, xmin:0, xmax:1}
     );
