@@ -8,7 +8,7 @@ var WORLD;
 var CX;
 var LISTG;
 
-var samplePerN = {1:50, 2:100};
+var samplePerN = {1:50, 2:100, 3: 200,4: 300,5: 400,6: 500,7: 600,8: 1000,9: 1000,10: 2000};
 
 ////////////////////////////////////////////////////////////////
 // Logistic map                                               //
@@ -294,7 +294,7 @@ function mousedown(e) {
 function dblclick(e){
   if(this !== e.target) 
     return;
-  
+
   e.preventDefault();
   if(WORLD.data('pile').length != 0) {
     var params = WORLD.data('pile').pop();
@@ -356,7 +356,7 @@ $(document).ready(function() {
     
     var f = function(x) {return $('#valA').slider('getValue')*x*(1-x);};
     plot(funcEL, f, 
-      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 500, xmin:0, xmax:1}
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 50, xmin:0, xmax:1}
     );
     
     var XN = $('#valX0').slider('getValue');
@@ -387,16 +387,16 @@ $(document).ready(function() {
     );
     
     var g = function(x) {return $('#valA2').slider('getValue')*x*(1-x);};
+    var n = $('#valn').slider('getValue');
     var f = function(x) {
       var ret = x;
-      var n = $('#valn').slider('getValue');
       for(var i=0; i<n; i++) {
         x = g(x);
       }
       return x;
     };
     plot(funcEL2, f, 
-      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: 100, xmin:0, xmax:1}
+      {range: [-.05, 1.05, -.05, 1.05], strokeStyle: 'blue', lineWidth: 3, steps: samplePerN[n], xmin:0, xmax:1}
     );
   }
   $('#valA2').slider().on('slide', funcs);

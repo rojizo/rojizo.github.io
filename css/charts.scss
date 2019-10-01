@@ -1,0 +1,17 @@
+---
+---
+// Core variables and mixins
+@import "variables.scss";
+@import "mixins.scss";
+
+.chart {
+  .yaxis {
+    margin: 0.15em 0.75em 0 0;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    -webkit-font-feature-settings: "vkrn", "vpal";
+    font-feature-settings: "vkrn", "vpal";
+  }
+}
