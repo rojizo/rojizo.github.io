@@ -202,6 +202,7 @@ function DrawBifurcation(AMIN, AMAX, XMIN, XMAX, func, color) {
 // Events Handlers                                            //
 ////////////////////////////////////////////////////////////////
 function mouseup(e) {
+  e.preventDefault();
   if(this !== e.target) return;
   if(!WORLD.data('mousedown')) return;
   if(WORLD.data('inipos') === null) return;
@@ -259,6 +260,7 @@ function mouseup(e) {
 }
 
 function mousemove(e) {
+  e.preventDefault();
   if(this !== e.target) return;
   
   if(WORLD.data('mousedown')) {
@@ -285,6 +287,7 @@ function mousemove(e) {
 }
 
 function mousedown(e) {
+  e.preventDefault();
   if(this !== e.target) return;
 
   WORLD.data("mousedown", true);
@@ -297,7 +300,9 @@ function mousedown(e) {
 }
 
 function dblclick(e){
+  e.preventDefault();
   if(this !== e.target) return;
+
   if(WORLD.data('dragging')) return;
   
   if(WORLD.data('pile').length != 0) {
@@ -329,10 +334,10 @@ $(document).ready(function() {
   WORLD.data('pile', []);
   
   // Event handlers
-  WORLD.dblclick(dblclick);
-  WORLD.mousedown(mousedown);
-  WORLD.mouseup(mouseup);
-  WORLD.mousemove(mousemove);
+  WORLD.on('dblclick', dblclick)
+    .on('mousedown', mousedown)
+    .on('mouseup', mouseup)
+    .on('mousemove', mousemove);
   
   $('#compu').on('click',function(e){
     DrawBifurcation(WORLD.data('AMIN'), WORLD.data('AMAX'),
