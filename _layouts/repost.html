@@ -9,3 +9,10 @@ layout: titleless
 
 {{ content }}
 
+<footer class="text-muted">
+  <i class="fa fa-clock-o"></i> {{ page.date | date: "%b %-d, %Y" }}
+  {{ edited }}
+  {% if edited %}
+    Last edition on {{edited}}  {{ edited | date: "%b %-d, %Y" }}
+  {% endif %}
+</footer>

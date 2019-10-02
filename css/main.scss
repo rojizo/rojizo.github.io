@@ -15,8 +15,14 @@
 
 
 
-#mainContent { font-size: 1.2rem; }
-
+#mainContent { 
+  font-size: 1.2rem; 
+  footer {
+    margin-top: 3rem;
+    color: $gray-600;
+    font-size: 0.8rem;
+  }
+}
 
 // Slider bootstrap4 correction
 .slider.slider-horizontal:hover,
