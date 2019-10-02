@@ -1,0 +1,44 @@
+---
+layout: minimal
+---
+{% assign currentURL = page.url %}
+{% if currentURL == '/' %}
+  {% assign currentURL = currentURL | append: page.language | append: '/' %}
+{% endif %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <div class="navbar-brand">
+    {% if page.icon %}<span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ page.icon | prepend: '/img/' | relative_url }}" alt="">
+    </span>{% endif %}
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      {% comment First pass to check the larger match %}{% endcomment %}
+      {% assign matched = '' %}
+      {% for item in site.navigation[page.language] %}
+        {% comment Right now it is enough to check in that way %}{% endcomment %}
+        {% if currentURL contains item.url and item.url contains matched %}
+          {% assign matched = item.url %}
+        {% endif %}
+      {% endfor %}
+      {% for item in site.navigation[page.language] %}
+      <li class="nav-item {% if matched == item.url %} active{% endif %}">
+        <a class="nav-link" href="{{item.url}}">{{ item.name }}</a></li>{% endfor %}
+      <li class="nav-link">
+        <div class="languages">
+        {% for item in site.navigation %}{% if item[0] == page.language %}
+          <span class="active"><a class="nav-link" href="#">{{ item[0] }}</a></span>
+        {% else %}
+          {% assign current = page.language | append: '/' %}
+          {% assign future = item[0] | append: '/' %}
+          <span class=""><a class="nav-link" href="{{ currentURL | replace_first:current,future | absolute_url }}">{{item[0]}}</a></span>
+        {% endif %}{% endfor %}
+      </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+{{ content }}

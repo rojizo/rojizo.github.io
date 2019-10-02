@@ -51,7 +51,7 @@
       <script src="{{ script | prepend: '/js/' | relative_url }}"></script>
     {% endfor %}
     {% for script in page.CDNs %}
-      <script src="{{ script }}"></script>
+      <script src="{{ script[0] }}" {% if script[1]%}integrity="{{ script[1] }}"{% endif %} crossorigin="anonymous"></script>
     {% endfor %}
     {% if page.mathjax %}
     {% include mathjax.html %}
