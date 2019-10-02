@@ -59,12 +59,13 @@ chartjs: true
 <p>
   Pensemos en el ejemplo
 </p>
-<p class="center">
+
+<!-- <p class="center">
   <canvas id="myChart"></canvas>
   <script>
-    
+
     new Chart(document.getElementById("myChart"),{"type":"doughnut","data":{"labels":["Red","Blue","Yellow"],"datasets":[{"label":"My First Dataset","data":[300,50,100],"backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]}});
-    
+
     var ctx = document.getElementById('myChart').getContext('2d');
     // var chart = new Chart(ctx, {
     //     // The type of chart we want to create
@@ -80,7 +81,7 @@ chartjs: true
     //     }
     // });
   </script>
-</p>
+</p> -->
 
 
 
@@ -92,8 +93,87 @@ chartjs: true
 \]
 </p>
 
-<p>
+<p name="varianzamuestral">
   \[
     s^2 = \frac1{N-1}\sum_{i=1}^N (x-\overline{X})^2
   \]
 </p>
+
+
+<h2>La desigualdad de Chebychev</h2>
+
+<!-- <p>El matemático ruso <a href="https://www-history.mcs.st-andrews.ac.uk/Biographies/Chebyshev.html">P.L. Chebychev</a> transliteración de Чебышёв</p>-->
+
+<p>
+  Consideremos una muestra $X=\{x_i\}_{i=1}^N$. La desigualdad de Chebychev nos 
+  proporciona una cota sobre el número de elementos de la muestra que están 
+  <em>cerca</em> de media muestral. La condición de cercanía a $\overline{X}$ se 
+  escribirá en términos de la desviación típica muestral y un parámetro libre 
+  $k$. Así, se tienen infinitas desigualdades, una por cada valor de $k$.
+</p>
+
+<p class="theorem" id="desigualdadchevicheff">
+  Sea $N_k$ el número de elementos de la muestra que pertenecen al 
+  intervalo $(\overline{X}-k\,s, \overline{X}+k\,s)$, entonces
+  \[
+    \frac{N_k}{N} > 1-\frac1{k^2}.\tag{X}
+  \]
+</p>
+
+<div class="proof">
+<p>
+  Por comodidad, escribiremos $I_k=(\overline{X}-k\,s, \overline{X}+k\,s)$.
+  De la definición de la <a href="#varianzamuestral">varianza muestral</a> 
+  tenemos que
+    $(N-1) s^2 = \sum_{i=1}^N (x_i-\overline{X})^2$
+  Podemos dividir el sumatorio entre los que pertenecen al intervalo $I_k$ y los
+  que no
+  \[
+    \begin{aligned}
+      (N-1) s^2 &= \sum_{i=1}^N (x_i-\overline{X})^2 =
+                   \sum_{x_i\notin I_k} (x_i-\overline{X})^2 +
+                   \sum_{x_i\in I_k} (x_i-\overline{X})^2 \\
+                &\geq \sum_{x_i\notin I_k} (x_i-\overline{X})^2
+                 \geq \sum_{x_i\notin I_k} (k\,s)^2 = (N-N_k)\,(k\,s)^2.
+    \end{aligned}
+  \]
+  La primera desigualdad se obtiene ya hemos eliminando una cantidad positiva 
+  ($(x_i-\overline{X})^2$ es siempre positivo). Para deducir la segunda basta 
+  observar que, como los $x_i$ que estamos sumando no pertenecen a $I_k$, deben 
+  estar a una distancia mayor o igual a $k\,s$ de $\overline{X}$, y por lo 
+  tanto $(x_i-\overline{X})^2\geq (k\,s)^2$. Finalmente, dado que se está 
+  sumando una constante, basta multiplicar por el número de veces que aparece, 
+  i.e, el número de elementos de la muestra que no pertenecen a $I_k$. 
+</p>
+
+<p>
+  Dividiendo por $N$ tenemos obtenemos
+  \[
+    \frac{N-1}{N}s^2 \geq (1-\frac{N_k}{N})k^2\,s^2.
+  \]
+  Simplificando $s^2$ y dividiendo por $k^2$ a ambos lados queda
+  \[
+    \frac{N-1}{N}\frac1{k^2} \geq (1-\frac{N_k}{N}).
+  \]
+  Como $\frac{N-1}{N}\frac1{k^2} < \frac1{k^2}$
+  \[
+    \frac1{k^2} > (1-\frac{N_k}{N}).
+  \]
+  Si reordenamos esta expresión obtenemos la desigualdad buscada.
+</p>
+</div>
+
+
+<script>
+  function ff(id) {
+    $(id+":bef")
+  }
+</script>
+
+desigualdadchevicheff
+
+
+
+
+
+

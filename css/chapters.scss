@@ -19,7 +19,7 @@
     color: $header-color;
     content: /*"\00A7"*/counter(chapcounter)"."counter(seccounter)"\0000a0\0000a0";
     counter-increment: seccounter;
-    counter-reset: subseccounter;
+    counter-reset: subseccounter 0 resultcounter 0;
   }
 
   h3 {
@@ -32,4 +32,27 @@
     content: counter(chapcounter)"."counter(seccounter)"."counter(subseccounter)"\0000a0\0000a0";
     counter-increment: subseccounter;
   }
+  
+  .theorem {
+    font-style: italic;
+  }
+  
+  .theorem:before {
+    content: "Theorem "counter(chapcounter)"."counter(seccounter)"."counter(resultcounter)".\0000a0";
+    counter-increment: resultcounter;
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  .proof:after {
+    content: "\025A0";
+    color: $primary;
+    float: right;
+  };
+  
+  .proof:before {
+    content: "Proof.\0000a0";
+    font-style: italic;
+  };
+  
 }
