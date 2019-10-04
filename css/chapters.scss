@@ -32,27 +32,50 @@
     content: counter(chapcounter)"."counter(seccounter)"."counter(subseccounter)"\0000a0\0000a0";
     counter-increment: subseccounter;
   }
+
+  .example {
+    font-style: normal;
+    margin: 1.5rem;
+    padding: 1rem 1.4rem;
+    border-radius: .4rem;
+    background: $gray-200;
+    counter-increment: resultcounter;
+
+    > :first-child:before {
+      content: "Ejemplo "counter(chapcounter)"."counter(seccounter)"."counter(resultcounter)".\0000a0";
+      font-weight: bold;
+      font-style: normal;
+    }
+    
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
   
   .theorem {
     font-style: italic;
   }
   
   .theorem:before {
-    content: "Theorem "counter(chapcounter)"."counter(seccounter)"."counter(resultcounter)".\0000a0";
+    content: "Teorema "counter(chapcounter)"."counter(seccounter)"."counter(resultcounter)".\0000a0";
     counter-increment: resultcounter;
     font-weight: bold;
     font-style: normal;
   }
   
-  .proof:after {
-    content: "\025A0";
-    color: $primary;
-    float: right;
-  };
-  
-  .proof:before {
-    content: "Proof.\0000a0";
-    font-style: italic;
-  };
+  .proof {
+    > :last-child:after {
+      content: "\025A0";
+      color: $primary;
+      float: right;
+    };
+    
+    > :first-child:before {
+        content: "Proof.\0000a0";
+        font-style: italic;
+      };
+  }
   
 }
