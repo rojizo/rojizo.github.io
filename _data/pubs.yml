@@ -1,3 +1,18 @@
+- title: "Numerical detection of patterns in CPGs: Gait patterns in insect movement"
+  tags: research
+  kind: article
+  authors:
+    - name: Barrio, Roberto
+    - name: Lozano Rojo, Álvaro
+    - name: Rodríguez, Marcos
+    - name: Serrano, Sergio
+  journal: Communications in Nonlinear Science and Numerical Simulation
+  vol: 82
+  year: 2020
+  pages: 105047
+  doi: 10.1016/j.cnsns.2019.105047
+
+
 - title: The triple point spectrum of closed orientable 3-manifolds
   tags: research
   kind: article
