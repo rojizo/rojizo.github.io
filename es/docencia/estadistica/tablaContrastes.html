@@ -1,0 +1,304 @@
+---
+layout: chapter
+title: Estadística descriptiva
+number: 1
+mathjax: true
+chartjs: true
+---
+
+
+<h2>Resumen de contrastes</h2>
+
+<p>
+  Supongamos que tenemos una población normal \(X\) de media \(\mu\) y 
+  desviación típica \(\sigma\). Tomamos una muestra aleatoria simple
+  \(X_1,X_2,\ldots,X_n\). Fijada una significación \(\alpha\):
+</p>
+
+<table width="100%" style="text-align: center">
+  <tr style="font-weight: bold; border-top: 2px solid">
+    <td style="padding: 10px;">Hipótesis</td>
+    <td style="padding: 10px;">Condiciones</td>
+    <td style="padding: 10px;">Estadístico y distribución</td>
+    <td style="padding: 10px;">Criterio de rechazo</td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2>
+      \[
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu \neq \mu_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(\sigma\) conocido
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+            \overset{H_0}{\sim} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        \lvert Z\rvert > z_{\alpha/2}
+      \]
+    </td>
+  </tr>
+  <tr>
+    <td>
+      \(\sigma\) desconocido
+    </td>
+    <td>
+      \[
+        T = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}
+            \overset{H_0}{\sim} t_{n-1}
+      \]
+    </td>
+    <td>
+      \[
+        \lvert T\rvert > t_{n-1,\alpha/2}
+      \]
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2>
+      \[
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu > \mu_0
+        \end{cases}
+      \]
+      o
+      \[
+        \begin{cases}
+          H_0: & \mu \leq \mu_0 \\
+          H_a: & \mu > \mu_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(\sigma\) conocido
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+            \overset{H_0}{\sim} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        Z > z_{\alpha}
+      \]
+    </td>
+  </tr>
+  <tr>
+    <td>
+      \(\sigma\) desconocido
+    </td>
+    <td>
+      \[
+        T = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}
+            \overset{H_0}{\sim} t_{n-1}
+      \]
+    </td>
+    <td>
+      \[
+        T > t_{n-1,\alpha}
+      \]
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2 style="border-bottom: 2px solid;">
+      \[
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \]
+      o
+      \[
+        \begin{cases}
+          H_0: & \mu \geq \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(\sigma\) conocido
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+            \overset{H_0}{\sim} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        Z < -z_{\alpha/2}
+      \]
+    </td>
+  </tr>
+  <tr style="border-bottom: 2px solid;">
+    <td>
+      \(\sigma\) desconocido
+    </td>
+    <td>
+      \[
+        T = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}
+            \overset{H_0}{\sim} t_{n-1}
+      \]
+    </td>
+    <td>
+      \[
+        T < -t_{n-1,\alpha/2}
+      \]
+    </td>
+  </tr>
+</table>
+
+
+<p style="margin-top: 3em">
+  Si tenemos una población \(X\sim Be(p)\). Tomamos una muestra aleatoria 
+  simple \(X_1,X_2,\ldots,X_n\). Fijada una significación \(\alpha\):
+</p>
+
+
+<table width="100%" style="text-align: center">
+  <tr style="font-weight: bold; border-top: 2px solid">
+    <td style="padding: 10px;" width="20%">Hipótesis</td>
+    <td style="padding: 10px;" width="20%">Condiciones</td>
+    <td style="padding: 10px;" width="30%">Estadístico y distribución</td>
+    <td style="padding: 10px;" width="30%">Criterio de rechazo</td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2>
+      \[
+        \begin{cases}
+          H_0: & p = p_0 \\
+          H_a: & p \neq p_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(n\) pequeño
+    </td>
+    <td>
+      \[
+        B = \sum_{i=0}^n X_i
+            \overset{H_0}{\sim} Bi(n, p_0)
+      \]
+    </td>
+    <td>
+      $F_{Bi(n,p_0)}(B) \leq \alpha/2$ o
+      $F_{Bi(n,p_0)}(B) \geq 1-\alpha/2$
+    </td>
+  </tr>
+  <tr>
+    <td>
+      \(n\) grande
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-p_0}{\sqrt{n p_0 (1-p_0)}}
+            \overset{H_0}{\approx} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        \lvert Z\rvert > z_{\alpha/2}
+      \]
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2>
+      \[
+        \begin{cases}
+          H_0: & p = p_0 \\
+          H_a: & p > p_0
+        \end{cases}
+      \]
+      o
+      \[
+        \begin{cases}
+          H_0: & p \leq p_0 \\
+          H_a: & p > p_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(n\) pequeño
+    </td>
+    <td>
+      \[
+        B = \sum_{i=0}^n X_i
+            \overset{H_0}{\sim} Bi(n, p_0)
+      \]
+    </td>
+    <td>
+      $F_{Bi(n,p_0)}(B) \geq 1-\alpha$
+    </td>
+  </tr>
+  <tr>
+    <td>
+      \(n\) grande
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-p_0}{\sqrt{n p_0 (1-p_0)}}
+            \overset{H_0}{\approx} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        Z > z_{\alpha}
+      \]
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td rowspan=2 style="border-bottom: 2px solid;">
+      \[
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \]
+      o
+      \[
+        \begin{cases}
+          H_0: & \mu \geq \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \]
+    </td>
+    <td>
+      \(n\) pequeño
+    </td>
+    <td>
+      \[
+        B = \sum_{i=0}^n X_i
+            \overset{H_0}{\sim} Bi(n, p_0)
+      \]
+    </td>
+    <td>
+      $F_{Bi(n,p_0)}(B) \leq \alpha$
+    </td>
+  </tr>
+  <tr style="border-bottom: 2px solid;">
+    <td>
+      \(n\) grande
+    </td>
+    <td>
+      \[
+        Z = \frac{\overline{X}-p_0}{\sqrt{n p_0 (1-p_0)}}
+            \overset{H_0}{\approx} N(0,1)
+      \]
+    </td>
+    <td>
+      \[
+        Z < -z_{\alpha}
+      \]
+    </td>
+  </tr>
+</table>
