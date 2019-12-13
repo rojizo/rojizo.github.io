@@ -1,0 +1,60 @@
+---
+layout: chapter
+title: Contrastes de hipótesis
+number: X
+mathjax: true
+chartjs: true
+---
+
+<p>
+  Un "psíquico" afirma que tiene poderes extrasensoriales y es capaz de ver el 
+  aura de una persona y distinguirla de la de los demás. Para testar esta 
+  afirmación James Randi y él acuerdan el siguiente experimento:
+  <ol>
+    <li>Hay 5 voluntarios colocadas detrás de biombos detrás de los que el 
+      psíquico puede "ver" el aura.</li>
+    <li>Randi dirá los nombres de los voluntarios de uno en uno y al azar, de 
+      manera que el psíquico los asigne cada uno al biombo en el que se 
+      encontraba.</li>
+    <li>Randi dará por bueno que el psíquico puede ver el aura de cada uno si 
+      es capaz de asignar cada persona con su biombo correcto.</li>
+  </ol>
+</p>
+
+<p>Podemos ver el experimento en el siguiente video</p>
+
+<p class="center" >
+<iframe class="shadow" width="560" height="315" src="https://www.youtube-nocookie.com/embed/OZeQGld5QBU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
+<p>Analicemos el procedimiento con cuidado. Queremos decidir entre dos 
+  opciones: el psíquico detecta las auras o no. Por defecto no debemos creerle 
+  (la hipótesis nula), él debe demostrarlo (la hipótesis alternativa). Así, 
+  tenemos estas dos hipótesis
+  \[
+    \begin{cases}
+      H_0 : & \text{No puede ver el aura} \\
+      H_a : & \text{Puede ver el aura}
+    \end{cases}
+  \]
+  Si en efecto lo hace al azar la variable aleatoria
+  \[
+    X = \text{Número de personas asignadas correctamente}
+  \]
+  se distribuye como
+  \[
+    P(X=5) = \frac1{120},
+    P(X=4) = 0,
+    P(X=3) = \frac1{12},
+    P(X=2) = \frac16,
+    P(X=1) = \frac{3}{8},
+    P(X=0) = \frac{11}{30}.
+  \]
+  Por lo tanto, el psíquico puede engañar a Randi con probabilidad
+  \[
+    \alpha = \frac1{120} = P(\text{Demos por bueno que ve el aura}\mid\text{No puede verla}).
+  \]
+  
+  
+</p>
+
