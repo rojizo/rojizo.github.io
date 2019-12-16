@@ -92,7 +92,7 @@ chartjs: true
       \( Z > z_{\alpha} \)
     </td>
     <td style="padding: 10px 0px">
-      \( \mathrm{P}( N(0,1) > T) \)
+      \( \mathrm{P}( N(0,1) > Z) \)
     </td>
   </tr>
   <tr>
@@ -141,7 +141,7 @@ chartjs: true
       \( Z < -z_{\alpha} \)
     </td>
     <td style="padding: 10px 0px">
-      \( \mathrm{P}( N(0,1) < T) \)
+      \( \mathrm{P}( N(0,1) < Z) \)
     </td>
   </tr>
   <tr>
@@ -173,7 +173,7 @@ chartjs: true
     <td style="padding: 10px 0px"></td>
     <td style="padding: 10px 0px">
       \(
-        c = (n-1) \dfrac{S^2}{\sigma_0} \overset{H_0}{\sim} \chi_{n-1}^2
+        c = (n-1) \dfrac{S^2}{\sigma^2_0} \overset{H_0}{\sim} \chi_{n-1}^2
       \)
     </td>
     <td style="padding: 10px 0px">
@@ -208,7 +208,7 @@ chartjs: true
     <td style="padding: 10px 0px"></td>
     <td style="padding: 10px 0px">
       \(
-        c = (n-1) \dfrac{S^2}{\sigma_0} \overset{H_0}{\sim} \chi_{n-1}^2
+        c = (n-1) \dfrac{S^2}{\sigma^2_0} \overset{H_0}{\sim} \chi_{n-1}^2
       \)
     </td>
     <td style="padding: 10px 0px">
@@ -237,7 +237,7 @@ chartjs: true
     <td style="padding: 10px 0px"></td>
     <td style="padding: 10px 0px">
       \(
-        c = (n-1) \dfrac{S^2}{\sigma_0} \overset{H_0}{\sim} \chi_{n-1}^2
+        c = (n-1) \dfrac{S^2}{\sigma^2_0} \overset{H_0}{\sim} \chi_{n-1}^2
       \)
     </td>
     <td style="padding: 10px 0px">
@@ -254,7 +254,6 @@ chartjs: true
   Si tenemos una población \(X\sim Be(p)\). Tomamos una muestra aleatoria 
   simple \(X_1,X_2,\ldots,X_n\). Fijada una significación \(\alpha\):
 </p>
-
 
 <table width="100%" style="text-align: center">
   <tr style="font-weight: bold; border-top: 2px solid">
@@ -395,3 +394,300 @@ chartjs: true
     </td>
   </tr>
 </table>
+
+
+<p style="margin-top: 3em">
+  Supongamos ahora que tenemos dos poblaciones \(X\sim N(\mu_X,\sigma_X)\)
+  e \(Y\sim N(\mu_Y,\sigma_Y)\).
+  Tomamos dos muestra aleatorias simples \(X_1,X_2,\ldots,X_{n_X}\) e
+  \(Y_1,Y_2,\ldots,Y_{n_Y}\). Si \(S_X^2\) y \(S_Y^2\) son las varianzas 
+  muestrales, definimos 
+  \[
+    S_p^2 = \frac{(n_X-1) S_X^2 + (n_Y-1) S_Y^2}{n_X+n_Y-2}.
+  \]
+  Tomamos \(r>0\).
+</p>
+
+<table width="100%" style="text-align: center">
+  <tr style="font-weight: bold; border-top: 2px solid">
+    <td style="padding: 10px 0px">Hipótesis</td>
+    <td style="padding: 10px 0px;">Condiciones</td>
+    <td style="padding: 10px 0px;">Estadístico y distribución</td>
+    <td style="padding: 10px 0px;">Criterio de rechazo</td>
+    <td style="padding: 10px 0px;">\(p\)-valor</td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td style="padding: 10px 0px" rowspan=3>
+      \(
+        \begin{cases}
+          H_0: & \mu_X - \mu_Y = \mu_0 \\
+          H_a: & \mu_X - \mu_Y \neq \mu_0
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X\) y \(\sigma_Y\) conocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( 
+        Z = \dfrac{\overline{X}-\overline{Y}-\mu_0}{\sqrt{\frac{\sigma_X^2}{n_X}+\frac{\sigma^2_Y}{n_Y}}}
+            \overset{H_0}{\sim} N(0,1)
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \lvert Z\rvert > z_{\alpha/2} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( 2\mathrm{P}( N(0,1) > \lvert Z\rvert) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X=\sigma_Y=\sigma\) desconocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X}-\overline{Y}-\mu_0}{S_p\sqrt{\frac1{n_X}+\frac1{n_Y}}}
+          \overset{H_0}{\sim} t_{n_X+n_Y-2}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \lvert T\rvert > t_{n_X+n_Y-2,\alpha/2} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( 2 \mathrm{P}( t_{n_X+n_Y-2} > \lvert T\rvert) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      Muestras apareadas,<br />
+      luego \(n=n_X=n_Y\)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X-Y}-\mu_0}{S_{X-Y}/\sqrt{n}}
+             \overset{H_0}{\sim} t_{n-1} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \lvert T\rvert > t_{n-1,\alpha/2} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( 2 \mathrm{P}( t_{n-1} > \lvert T\rvert) \)
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td style="padding: 10px 0px" rowspan=3>
+      \(
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu > \mu_0
+        \end{cases}
+      \)
+      <br />o<br />
+      \(
+        \begin{cases}
+          H_0: & \mu \leq \mu_0 \\
+          H_a: & \mu > \mu_0
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X\) y \(\sigma_Y\) conocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( 
+        Z = \dfrac{\overline{X}-\overline{Y}-\mu_0}{\sqrt{\frac{\sigma_X^2}{n_X}+\frac{\sigma^2_Y}{n_Y}}}
+            \overset{H_0}{\sim} N(0,1)
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( Z > z_{\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( N(0,1) > Z) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X=\sigma_Y=\sigma\) desconocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X}-\overline{Y}-\mu_0}{S_p\sqrt{\frac1{n_X}+\frac1{n_Y}}}
+          \overset{H_0}{\sim} t_{n_X+n_Y-2}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T > t_{n_X+n_Y-2,\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( t_{n_X+n_Y-2} > T) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      Muestras apareadas,<br />
+      luego \(n=n_X=n_Y\)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X-Y}-\mu_0}{S_{X-Y}/\sqrt{n}}
+             \overset{H_0}{\sim} t_{n-1} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T > t_{n-1,\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( t_{n-1} > T) \)
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td style="padding: 10px 0px" rowspan=3>
+      \(
+        \begin{cases}
+          H_0: & \mu = \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \)
+      <br />o<br />
+      \(
+        \begin{cases}
+          H_0: & \mu \geq \mu_0 \\
+          H_a: & \mu < \mu_0
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X\) y \(\sigma_Y\) conocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( 
+        Z = \dfrac{\overline{X}-\overline{Y}-\mu_0}{\sqrt{\frac{\sigma_X^2}{n_X}+\frac{\sigma^2_Y}{n_Y}}}
+            \overset{H_0}{\sim} N(0,1)
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( Z < -z_{\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( N(0,1) < Z) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      \(X\) e \(Y\) independientes,<br />
+      \(\sigma_X=\sigma_Y=\sigma\) desconocidos
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X}-\overline{Y}-\mu_0}{S_p\sqrt{\frac1{n_X}+\frac1{n_Y}}}
+          \overset{H_0}{\sim} t_{n_X+n_Y-2}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T < -t_{n_X+n_Y-2,\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( t_{n_X+n_Y-2} < T) \)
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 0px">
+      Muestras apareadas,<br />
+      luego \(n=n_X=n_Y\)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T = \dfrac{\overline{X-Y}-\mu_0}{S_{X-Y}/\sqrt{n}}
+             \overset{H_0}{\sim} t_{n-1} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( T < -t_{n-1,\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( \mathrm{P}( t_{n-1} < T) \)
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td style="padding: 10px 0px">
+      \(
+        \begin{cases}
+          H_0: & \sigma_X = r\sigma_Y \\
+          H_a: & \sigma_X \neq r\sigma_Y
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">\(X\) e \(Y\) independientes</td>
+    <td style="padding: 10px 0px">
+      \(
+        F = \dfrac{S_X^2}{r\,S_Y^2} \overset{H_0}{\sim} \mathcal{F}_{n_X-1,n_Y-1}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( F < \mathcal{F}_{n_X-1,n_Y-1, 1-\frac\alpha2} \)
+      o
+      \( F > \mathcal{F}_{n_X-1,n_Y-1, \frac\alpha2} \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( 
+        2 \min\bigl(\textrm{P}(\mathcal{F}_{n_X-1,n_Y-1} < F), 
+                    \textrm{P}(\mathcal{F}_{n_X-1,n_Y-1} > F)
+              \bigr)
+      \)
+    </td>
+  </tr>
+  <tr style="border-top: 1px solid;">
+    <td style="padding: 10px 0px">
+      \(
+        \begin{cases}
+          H_0: & \sigma = r\sigma_0 \\
+          H_a: & \sigma > r\sigma_0
+        \end{cases}
+      \)
+      <br />o<br />
+      \(
+        \begin{cases}
+          H_0: & \sigma \leq r\sigma_0 \\
+          H_a: & \sigma > r\sigma_0
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">\(X\) e \(Y\) independientes</td>
+    <td style="padding: 10px 0px">
+      \(
+        F = \dfrac{S_X^2}{r\,S_Y^2} \overset{H_0}{\sim} \mathcal{F}_{n_X-1,n_Y-1}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( F > \mathcal{F}_{n_X-1,n_Y-1, \alpha} \)
+    </td>
+    <td style="padding: 10px 0px">\(\textrm{P}(\mathcal{F}_{n_X-1,n_Y-1} > F)\)</td>
+  </tr>
+  <tr style="border-top: 1px solid; border-bottom: 2px solid;">
+    <td style="padding: 10px 0px" style="border-bottom: 2px solid;">
+      \(
+        \begin{cases}
+          H_0: & \sigma = r\sigma_0 \\
+          H_a: & \sigma < r\sigma_0
+        \end{cases}
+      \)
+      <br />o<br />
+      \(
+        \begin{cases}
+          H_0: & \sigma \geq \sigma_0 \\
+          H_a: & \sigma < \sigma_0
+        \end{cases}
+      \)
+    </td>
+    <td style="padding: 10px 0px">\(X\) e \(Y\) independientes</td>
+    <td style="padding: 10px 0px">
+      \(
+        F = \dfrac{S_X^2}{r\,S_Y^2} \overset{H_0}{\sim} \mathcal{F}_{n_X-1,n_Y-1}
+      \)
+    </td>
+    <td style="padding: 10px 0px">
+      \( F < \mathcal{F}_{n_X-1,n_Y-1,1-\alpha} \)
+    </td>
+    <td style="padding: 10px 0px">\(\textrm{P}(\mathcal{F}_{n_X-1,n_Y-1} < F)\)</td>
+  </tr>
+</table>
+
