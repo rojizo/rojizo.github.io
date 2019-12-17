@@ -1,0 +1,57 @@
+---
+layout: chapter
+title: Regresión lineal
+number: 1
+mathjax: true
+chartjs: true
+---
+
+<h2>Regresión lineal</h2>
+
+
+<p>Consideremos que tenemos la variable aleatoria 
+  \[
+    Y = \alpha+\beta X +\varepsilon
+  \]
+  donde \(X\) no es una variable aleatoria y \(\varepsilon\) es una variable 
+  aleatoria de media \(0\) y varianza \(\sigma\). En otras palabras, para cada 
+  valor de \(X\) tenemos una variable aleatoria \(Y_X\) de media 
+  \(\alpha+\beta X\).
+</p>
+
+<p>
+  Si tenemos una muestra para \(Y\) dada por unos valores de \(X\), 
+  \(\{(x_i,y_i)\}\), para estimar los valores de \(\alpha\) y \(\beta\) podemos 
+  considerar lo siguiente.
+  Para cada posibles valores de \(\alpha\) y \(\beta\) tenemos el residuo 
+  \(i\)-ésimo
+  \[
+    r_i = y_i - \alpha - \beta x_i.
+  \]
+  Los mejores \(\alpha\) y \(\beta\) serán aquellos que minimicen, en algún 
+  sentido, todos los residuos a la vez. Consideremos la suma de los cuadrados 
+  de los residuos como función de los coeficientes 
+  \begin{equation}
+    \label{SCR}
+    SCR(\alpha,\beta) = \sum_{i=1}^n (y_i - \alpha - \beta x_i)^2.
+  \end{equation}
+  Tomamos como los estimadores de \(\alpha\) y \(\beta\) los valores 
+  \(\hat\alpha\) y \(\hat\beta\) que minimizan la expresión \eqref{SCR}. 
+  Basta entonces tomar ambas derivadas parciales para encontrar el punto crítico:
+  \begin{align}
+    \label{partialSCRalpha}
+    0 &= \frac{\partial SCR}{\partial\alpha} = \sum_{i=1}^n 2(y_i - \alpha - \beta x_i). \\
+    \label{partialSCRbeta}
+    0 &= \frac{\partial SCR}{\partial\beta} = \sum_{i=1}^n 2(y_i - \alpha - \beta x_i)x_i.
+  \end{align}
+</p>
+
+<p>
+  La ecuación&nbsp;\ref{partialSCRalpha} es equivalente a que 
+  \( \sum_{i=1}^n y_i = n\alpha + \beta \sum_{i=1}^n x_i) \). 
+  Dividiendo por \(n\) tenemos
+  \[
+    \overline{Y} = \alpha + \beta \overline{X}.
+  \]
+</p>
+
