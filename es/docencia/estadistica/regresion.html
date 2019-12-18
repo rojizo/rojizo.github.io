@@ -6,7 +6,7 @@ mathjax: true
 chartjs: true
 ---
 
-<h2>Regresión lineal</h2>
+<h2>Mínimos cuadrados ordinarios</h2>
 
 
 <p>Consideremos que tenemos la variable aleatoria 
@@ -19,8 +19,7 @@ chartjs: true
   \(\alpha+\beta X\).
 </p>
 
-<p>
-  Si tenemos una muestra para \(Y\) dada por unos valores de \(X\), 
+<p>Si tenemos una muestra para \(Y\) dada por unos valores de \(X\), 
   \(\{(x_i,y_i)\}\), para estimar los valores de \(\alpha\) y \(\beta\) podemos 
   considerar lo siguiente.
   Para cada posibles valores de \(\alpha\) y \(\beta\) tenemos el residuo 
@@ -40,18 +39,121 @@ chartjs: true
   Basta entonces tomar ambas derivadas parciales para encontrar el punto crítico:
   \begin{align}
     \label{partialSCRalpha}
-    0 &= \frac{\partial SCR}{\partial\alpha} = \sum_{i=1}^n 2(y_i - \alpha - \beta x_i). \\
+    0 &= -\frac{\partial SCR}{\partial\hat\alpha} = \sum_{i=1}^n 2(y_i - \hat\alpha - \hat\beta x_i), \\
     \label{partialSCRbeta}
-    0 &= \frac{\partial SCR}{\partial\beta} = \sum_{i=1}^n 2(y_i - \alpha - \beta x_i)x_i.
+    0 &= -\frac{\partial SCR}{\partial\hat\beta} = \sum_{i=1}^n 2(y_i - \hat\alpha - \hat\beta x_i)x_i.
   \end{align}
+  Entonces
+    \begin{align}
+      \label{partialSCRalpha2}
+      \sum_{i=1}^n y_i      &= \hat\alpha n + \hat\beta \sum_{i=1}^n x_i, \\
+      \label{partialSCRbeta2}
+      \sum_{i=1}^n x_i\,y_i &= \hat\alpha\sum_{i=1}^n x_i + \hat\beta \sum_{i=1}^n x_i^2.
+    \end{align}
 </p>
 
-<p>
-  La ecuación&nbsp;\ref{partialSCRalpha} es equivalente a que 
-  \( \sum_{i=1}^n y_i = n\alpha + \beta \sum_{i=1}^n x_i) \). 
-  Dividiendo por \(n\) tenemos
+<p>De \eqref{partialSCRalpha2} obtenemos 
+  \begin{equation}
+    \label{YmediaXmedia}
+    \overline{Y} = \hat\alpha + \hat\beta \overline{X}.
+  \end{equation}
+  Por otro lado, multiplicando \eqref{partialSCRbeta2} por \(n\) y restando 
+  \(\sum_{i=1}^n x_i\) veces \eqref{partialSCRalpha2} obtenemos 
   \[
-    \overline{Y} = \alpha + \beta \overline{X}.
+    n\sum_{i=1}^n x_i\,y_i - \sum_{i=1}^n y_i \sum_{i=1}^n x_i
+    =
+    \hat\beta \biggl(n\sum_{i=1}^n x_i^2 - \sum_{i=1}^n x_i \sum_{i=1}^n x_i\biggr).
+  \]
+  Por lo tanto
+  \begin{equation}
+    \begin{aligned}
+      \hat\beta &= \frac{n\sum_{i=1}^n x_i\,y_i - \sum_{i=1}^n y_i \sum_{i=1}^n x_i}
+                        {n\sum_{i=1}^n x_i^2 - \sum_{i=1}^n x_i \sum_{i=1}^n x_i} \\
+                &= \frac{n\sum_{i=1}^n (x_i\,y_i - \overline{X} \overline{Y})}
+                        {n\sum_{i=1}^n (x_i-\overline{X})^2}
+                 = \frac{S_{XY}}{S_X^2}.
+    \end{aligned}
+    \label{hatBeta}
+  \end{equation}
+  Finalmente, de \eqref{YmediaXmedia}
+  \[
+    \hat\alpha = \overline{Y} - \frac{S_{XY}}{S_X^2} \overline{X}.
   \]
 </p>
+
+<p>Calculemos la esperanza del estimador \(\hat\beta\)
+</p>
+
+<p class="theorem" id="Ehatb">
+  Si \(\mathrm{E}[\varepsilon] = 0\), los estimadores \(\hat\alpha\) y \(\hat\beta\)
+  son insesgados, es decir, 
+  \begin{align*}
+    \mathrm{E}[\hat\alpha] &= \alpha
+    &&\text{y}&
+    \mathrm{E}[\hat\beta] &= \beta.
+  \end{align*}
+<p>
+  
+<div class="proof">
+  <p>De \eqref{hatBeta} tenemos que 
+    \(\hat\beta = \frac{\sum_{i=1}^n (x_i\,y_i - \overline{X} \overline{Y})}{\sum_{i=1}^n (x_i-\overline{X})^2}\).
+    Tomando esperanzas, usando la linealidad de la misma, teniendo en cuenta 
+    que \(x_i\) no es aleatorio y que \(\mathrm{E}[y_i] = \alpha+\beta x_i\)
+    \begin{align*}
+      \mathrm{E}[\hat\beta] &= 
+         \frac{\sum_{i=1}^n (x_i \mathrm{E}[y_i] - \overline{X} \mathrm{E}[\overline{Y}])}
+              {\sum_{i=1}^n (x_i-\overline{X})^2} \\
+      &= \frac{\sum_{i=1}^n \bigl(x_i (\alpha + \beta x_i) - \overline{X} (\alpha + \beta\overline{X}) \bigr)}
+              {\sum_{i=1}^n (x_i-\overline{X})^2} \\
+      &= \frac{\sum_{i=1}^n \Bigl(\alpha x_i + \beta x_i^2 - \alpha\overline{X} - \beta\overline{X}^2 \Bigr)}
+              {\sum_{i=1}^n (x_i-\overline{X})^2} \\
+      &= \frac{\alpha \sum_{i=1}^n x_i - n\alpha\overline{X} + \beta \sum_{i=1}^n x_i^2 - n\beta\overline{X}^2}
+              {\sum_{i=1}^n (x_i-\overline{X})^2} \\
+      &= \beta \frac{\sum_{i=1}^n x_i^2-n\overline{X}^2}{\sum_{i=1}^n (x_i-\overline{X})^2}
+       = \beta.
+    \end{align*}
+    De forma similar, 
+    \[
+      \mathrm{E}[\hat\alpha] = \mathrm{E}[\overline{Y}] - \mathrm{E}[\hat\beta]\overline{X}
+        = \alpha + \beta\overline{X} - \beta\overline{X} = \alpha.
+    \]
+  </p>
+</div>
+
+<p class="theorem" id="Vhatb">
+  Si \(\mathrm{Var}[\varepsilon] = \sigma^2 < +\infty \), entonces
+  \begin{align*}
+    \mathrm{Var}(\hat\beta) &= \frac{\sigma^2}{(n-1) S^2_X}
+    &&\text{y}&
+    \mathrm{Var}(\hat\beta) &= \frac{\sigma^2}{(n-1) S^2_X}.
+  \end{align*}
+</p>
+
+<div class="proof">
+  <p>Podemos reescribir la primera identidad de \eqref{hatBeta} como
+    \begin{align*}
+      \hat\beta &= K^{-1} \Bigl(n\sum_{i=1}^n x_i\,y_i - \sum_{i=1}^n y_i \sum_{i=1}^n x_i\Bigr) \\
+                &= K^{-1} \Bigl(\sum_{i=1}^n x_i\,y_i - \sum_{i=1}^n y_i \overline{X}\Bigr) 
+                 = K^{-1} \sum_{i=1}^n (x_i-\overline{X})y_i,
+    \end{align*}
+    donde \(K = \sum_{i=1}^n (x_i - \overline{X})^2 = (n-1) S^2_X\). Por lo tanto, como 
+    \(Y_1,Y_2,\ldots,Y_n\) are independientes con varianza \(\sigma^2\)
+    \begin{align*}
+      \mathrm{Var}(\hat\beta) &= K^{-2} \sum_{i=1}^n (x_i-\overline{X})^2 \mathrm{Var}(y_i) \\
+        &= K^{-2} \sum_{i=1}^n (x_i-\overline{X})^2 \sigma^2
+         = K^{-2} \sigma^2 \color{blue}{\sum_{i=1}^n (x_i-\overline{X})^2} \\
+        &= K^{-2} \sigma^2 \color{blue}{K} 
+         = \frac{\sigma^2}{(n-1) S^2_X}.
+    \end{align*}
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
 
