@@ -1,0 +1,122 @@
+---
+layout: chapter
+title: Pedazos varios
+number: 0
+mathjax: true
+---
+
+<h3>19</h3>
+<p>
+  El tiempo (en horas) hasta que cierta máquina se estropea sigue una 
+  distribución \(\exp(\frac12)\).
+  <ol>
+    <li>
+      Calcular la probabilidad de que una máquina dure dos horas sin 
+      estropearse.
+      <p>
+        Denotemos por \(T\) la variable tiempo hasta que se estropea. 
+        La pregunta es calcular \(P(T>2)\).
+        Dado que conocemos la distribución sabemos que 
+        \(F_T(t) = 1-e^{-\frac12 t}\), basta evaluar
+        \[
+          P(T>2) = 1- F_T(2) = e^{-1} \approx 0.3678794412.
+        \] 
+      </p>
+    </li>
+    <li>
+      Calcular la probabilidad de que una máquina dure más de diez horas sin 
+      estropearse, si acumula nueve horas sin averías
+      <p>
+        Con la notación anterior debemos calcular \(P(T>10\mid T>9)\). Por la 
+        propiedad de la falta de memoria de la exponencial sabemos que
+        \(P(T>10\mid T>9) = P(T>1)\)y por lo tanto
+        \[
+          P(T>10\mid T>9) = P(T>1) = e^{-\frac12} \approx 0.6065306597.
+        \]
+      </p>
+    </li>
+    <li>
+      Si a las 0:00am comienzan a funcionar en una fabrica multitud de estas 
+      máquinas de manera independiente, dar la distribución de la variable:
+      \[
+        N = \text{número de máquinas que se estropean de 9:00am a 3:00pm.}
+      \]
+      <p>
+        Cuando hablamos de la exponencial vimos que aparecía como el tiempo 
+        entre eventos en un <em>proceso de Poisson</em>. Así, que como tenemos
+        seis horas con una tasa de fallo de \(\frac12\). Por lo que el número de
+        máquinas defectuosas seguirá una \(Poisson(6\frac12) = Poisson(3)\).
+      </p>
+    </li>
+    <li>
+      Si no hubo averías hasta las 8:00am, ¿cuál es la probabilidad de que la 
+      tercera avería suceda después de las 2:00pm.?
+      <p>
+        Razonamos como antes, de 8am a 2pm tenemos 6 horas. Así que si
+        \(M\) es el número de averías en ese intervalo de tiempo, \(M\sim 
+          Poisson(3)\), y la respuesta es 
+          \(P(M\leq2) = \frac{17}2 e^{-3}\approx 0.42319\).
+      </p>
+    </li>
+    <li>
+      ¿Cuál es la probabilidad de que la tercera avería haya sucedido entre las 
+      3:00 y las 6:00am?
+      <p>
+        Supongamos que las máquinas empiezan a trabajar a las 0 horas.
+        Puede ocurrir que entre las 0 y las 3am pueden pasar 3 cosas, 0, 1 o 2 
+        averías. Entonces debemos calcular
+        \[
+          \sum_{k=0}^{2} P(\text{\(k\) averías entre 0 y 3am}) 
+                         P(\text{\(3-k\) o más averías entre 3 y 6am}).
+        \]
+        Así, sí \(X\sim Poisson(\frac32)\)
+        \[
+          P(X = 0)P(X \geq 3) + P(X = 1)P(X \geq 2) + P(X = 2)P(X \geq 1)
+        \]
+      </p>
+    </li>
+  </ol>
+</p>
+
+
+
+<h3>24</h3>
+<p>
+  Calcule la distribución de \(m = \min\{X, Y\}\) y \(M = \max\{X, Y \}\) si 
+  \(X\) e \(Y\) son independientes y su distribución es \(U(a, b)\).
+</p>
+
+<p>
+  Evidentemente el máximo o el mínimo de dos variables
+  aleatorias \(U(a, b)\) toma valores en el intervalo \((a,b)\).
+  Comencemos calculando la distribución de \(M\).
+  La función de distribución de \(M\) es
+  \[
+    F_M(x) = P(M\leq x) = P(\max\{X, Y \} \leq x).
+  \]
+  Para que el máximo sea menor que un cierto valor \(x\), ambas \(X\) e \(Y\) 
+  deben serlo, es decir, que 
+  \[
+    F_M(x) = P(X \leq x \quad\text{e}\quad Y\leq x).
+  \]
+  Por la independencia de \(X\) e \(Y\) concluimos que
+  \[
+    F_M(x) = P(X \leq x) P(Y\leq x) = \frac{(x-a)^2}{(b-a)^2}
+  \]
+  para \(x\in(a,b)\).
+</p>
+
+<p>
+  El caso de \(m\) puede hacerse de manera similar. 
+  \[
+    P(m > x) = P(\min\{X, Y\} > x) = P(X > x \quad\text{e}\quad Y > x)
+      = P(X > x) P(Y > x) = \frac{(b-x)^2}{(b-a)^2},
+  \]
+  si \(x\in(a,b)\). Por lo tanto, la función de distribución es
+  \[
+    F_m(x) = 1- \frac{(b-x)^2}{(b-a)^2}.
+  \]
+</p>
+
+
+<h3>19</h3>
