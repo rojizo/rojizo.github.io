@@ -1,0 +1,41 @@
+---
+layout: chapter
+title: La distribución normal multivariante
+number: 1
+mathjax: true
+chartjs: true
+---
+
+
+<p>
+  Sea 
+  \[
+    f(x) = \frac1{\sqrt{2\pi}} e^{x^2}
+  \]
+  la función de densidad de una variable aleatoria normal estándar. Consideremos
+  la función de densidad conjunta definida como
+  \[
+    g(x,y) = \begin{cases}
+      2f(x)f(y), & \text{si $x\,y > 0$,} \\
+      0, & \text{si $x\,y \leq 0$}
+    \end{cases}
+  \]
+  ¡¡TODO: DIBUJO!!
+  El vector aleatoria asociado a esta función de densidad tiene por marginales 
+  dos normales estándar \(X\) e \(Y\) no independientes. Basta calcular la función de densidad 
+  marginal de cualquiera de ellas. Por ejemplo, si \(y\leq0\) entonces
+  \[
+    f_Y(y) = \int_\mathbb{R} g(x,y) \mathrm{d}x = 
+             \int_{-\infty}^0 2f(x)f(z) \mathrm{d}x
+             +\int_{-\infty}^0 0 \mathrm{d}x
+           = f(y) 2 \int_{-\infty}^0 f(x) \mathrm{d}x = f(y).
+  \]
+  De forma similar podemos concluir que \(f_Y(y)=f(y)\) para \(y>0\). 
+  Evidentemente, la densidad marginal \(f_X\) se comporta de la misma manera.
+</p>
+
+<p>
+  Veamos como es la distribución de \(X+Y\).
+</p>
+
+
