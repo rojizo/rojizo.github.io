@@ -1,3 +1,16 @@
+- title: "Routes to tripod gait movement in hexapods"
+  tags: research
+  kind: article
+  authors:
+    - name: Barrio, Roberto
+    - name: Lozano Rojo, Álvaro
+    - name: Martínez, M.A.
+    - name: Rodríguez, Marcos
+    - name: Serrano, Sergio
+  journal: Neurocomputing
+  pages: Accepted
+
+
 - title: "Numerical detection of patterns in CPGs: Gait patterns in insect movement"
   tags: research
   kind: article
