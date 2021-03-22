@@ -8,7 +8,7 @@
   year: 2020
   journal: Proceedings of the American Mathematical Society
   pages: Accepted
-
+  doi: 10.1090/proc/15365
 
 - title: "Routes to tripod gait movement in hexapods"
   tags: research
@@ -94,7 +94,6 @@
     - name: Vigara Benito, Rubén
   journal: RACSAM
   year: 2018
-  
   vol: 112
   num: 3
   pages: 751-765
