@@ -1,16 +1,19 @@
-- title: "Free minimal actions of solvable Lie groups which are not affable"
+- title: Free minimal actions of solvable Lie groups which are not affable
   tags: research
   kind: article
   authors:
     - name: Alcalde, Fernando
     - name: Lozano Rojo, Álvaro
     - name: Martínez, Matilde
+  vol: 149
+  num: 6
   year: 2020
   journal: Proceedings of the American Mathematical Society
-  pages: Accepted
+  pages: 2679–2691
   doi: 10.1090/proc/15365
 
-- title: "Routes to tripod gait movement in hexapods"
+
+- title: Routes to tripod gait movement in hexapods
   tags: research
   kind: article
   authors:
