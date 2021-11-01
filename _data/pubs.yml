@@ -1,3 +1,16 @@
+
+- title: Bernoulli and binomial proliferation on evolutionary graphs
+  tags: research
+  kind: article
+  authors:
+    - name: Alcalde Cuesta, Fernando
+    - name: Guerberoff, Gustavo
+    - name: Lozano Rojo, Álvaro
+  journal: Neurocomputing
+  year: 2021
+  pages: 110942 (in press)
+  doi: 10.1016/j.jtbi.2021.110942
+
 - title: Authority and consensus in group decision making with fallible individuals
   tags: research
   kind: article
@@ -39,7 +52,6 @@
   year: 2021
   vol: 461
   pages: 679–695
-  pages: Accepted
   doi: 10.1016/j.neucom.2020.06.151
 
 
