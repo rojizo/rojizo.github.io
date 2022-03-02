@@ -7,8 +7,9 @@
     - name: Guerberoff, Gustavo
     - name: Lozano Rojo, Álvaro
   journal: Journal of Theoretical Biology
-  year: 2021
-  pages: 110942 (in press)
+  year: 2022
+  vol: 534
+  pages: 110942
   doi: 10.1016/j.jtbi.2021.110942
 
 - title: Authority and consensus in group decision making with fallible individuals
@@ -33,7 +34,7 @@
     - name: Martínez, Matilde
   vol: 149
   num: 6
-  year: 2020
+  year: 2021
   journal: Proceedings of the American Mathematical Society
   pages: 2679–2691
   doi: 10.1090/proc/15365
