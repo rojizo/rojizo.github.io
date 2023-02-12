@@ -1,3 +1,21 @@
+- title: Connecting chaotic regions in the Coupled Brusselator System
+  tags: research
+  kind: article
+  authors:
+    - name: Drubi, Fátima
+    - name: Mayora-Cebollero, Ana
+    - name: Mayora-Cebollero, Carmen
+    - name: Ibáñez, Santiago
+    - name: Jover-Galtier. Jorge A.
+    - name: Lozano Rojo, Álvaro
+    - name: Pérez, Lucía 
+    - name: Barrio, Roberto 
+  journal: Chaos, Solitons & Fractals
+  year: 2023
+  vol: 169 
+  pages: 113240
+  doi: 10.1016/j.chaos.2023.113240
+  url: https://authors.elsevier.com/c/1ga7-3QI~FZgHA
 
 - title: Bernoulli and binomial proliferation on evolutionary graphs
   tags: research
