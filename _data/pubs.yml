@@ -1,3 +1,34 @@
+- title: Deep Learning for Chaos Detection
+  journal: Chaos
+  authors:
+    - name: Roberto, Barrio
+    - name: Lozano Rojo, Álvaro
+    - name: Mayora-Cebollero, Ana
+    - name: Mayora-Cebollero, Carmen
+    - name: Miguel, Antonio
+    - name: Ortega, Alfondo
+    - name: Serrano, Sergio
+    - name: Vigara, Rubén
+  year: To appear
+
+- title: "Dynamics of excitable cells: spike-adding phenomena in action"
+  tags: research
+  kind: article
+  authors:
+    - name: Barrio, Roberto
+    - name: Ibañez, Santiago
+    - name: Jover-Galtier, Jorge A.
+    - name: Lozano Rojo, Álvaro
+    - name: Martínez, M. Ángeles
+    - name: Mayora-Cebollero, Ana
+    - name: Mayora-Cebollero, Carmen
+    - name: Pérez, Lucía 
+    - name: Serrano, Sergio
+    - name: Vigara Benito, Rubén
+  journal: SeMA Journal
+  year: 2023
+  doi: 10.1007/s40324-023-00328-2
+
 - title: Authoritarianism versus participation in innovation decisions
   tags: research
   kind: article
