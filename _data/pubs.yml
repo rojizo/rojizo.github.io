@@ -1,8 +1,9 @@
-- title: Deeplearing for chaos detection
+- title: Deep Learning for Chaos Detection
   tags: research
   kind: article
+  journal: Chaos
   authors:
-    - name: Barrio, Roberto
+    - name: Roberto, Barrio
     - name: Lozano Rojo, Álvaro
     - name: Mayora-Cebollero, Ana
     - name: Mayora-Cebollero, Carmen
@@ -15,6 +16,25 @@
   vol: 33 
   pages: 073146
   doi: 10.1063/5.0143876
+
+- title: "Dynamics of excitable cells: spike-adding phenomena in action"
+  tags: research
+  kind: article
+  authors:
+    - name: Barrio, Roberto
+    - name: Ibañez, Santiago
+    - name: Jover-Galtier, Jorge A.
+    - name: Lozano Rojo, Álvaro
+    - name: Martínez, M. Ángeles
+    - name: Mayora-Cebollero, Ana
+    - name: Mayora-Cebollero, Carmen
+    - name: Pérez, Lucía 
+    - name: Serrano, Sergio
+    - name: Vigara Benito, Rubén
+  journal: SeMA Journal
+  year: 2023
+  doi: 10.1007/s40324-023-00328-2
+>>>>>>> 4d3ce2eb65f76f38e7cc078f088ea6a43ecd7e73
 
 - title: Authoritarianism versus participation in innovation decisions
   tags: research
@@ -410,16 +430,6 @@
   vol: 347
   year: 2009
   pages: 947-952
-
-- title: Codimension zero laminations are inverse limits
-  tags: research
-  kind: article
-  journal: Topology and its Applications
-  vol: 160
-  year: 2013
-  pages: 341-349
-  authors: 
-    - name: Lozano Rojo, Álvaro
 
 - title: Urban influence on increasing ozone concentrations in a characteristic Mediterranean agglomeration
   tags: research
