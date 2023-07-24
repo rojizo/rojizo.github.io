@@ -1,3 +1,21 @@
+- title: Deeplearing for chaos detection
+  tags: research
+  kind: article
+  authors:
+    - name: Barrio, Roberto
+    - name: Lozano Rojo, Álvaro
+    - name: Mayora-Cebollero, Ana
+    - name: Mayora-Cebollero, Carmen
+    - name: Miguel, Antonio
+    - name: Ortega, Alfonso
+    - name: Serrano, Sergio
+    - name: Vigara, Rubén
+  journal: Chaos
+  year: 2023
+  vol: 33 
+  pages: 073146
+  doi: 10.1063/5.0143876
+
 - title: Authoritarianism versus participation in innovation decisions
   tags: research
   kind: article
