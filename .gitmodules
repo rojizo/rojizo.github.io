@@ -3,9 +3,9 @@
 	url = https://bitbucket.org/alvarolozano/js_moran.git
 [submodule "stuff/fpExplorer"]
 	path = stuff/fpExplorer
-	url = https://github.com/rojizo/fpExplorer.git
+	url = git@github.com:rojizo/fpExplorer.git
 	branch = master
 [submodule "stuff/maximalTimes"]
 	path = stuff/maximalTimes
-	url = https://github.com/rojizo/fpExplorer.git
+	url = git@github.com:rojizo/fpExplorer.git
 	branch = proliferationTimes
