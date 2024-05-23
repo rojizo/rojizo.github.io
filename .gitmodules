@@ -4,3 +4,8 @@
 [submodule "stuff/fpExplorer"]
 	path = stuff/fpExplorer
 	url = https://github.com/rojizo/fpExplorer.git
+	branch = master
+[submodule "stuff/maximalTimes"]
+	path = stuff/maximalTimes
+	url = https://github.com/rojizo/fpExplorer.git
+	branch = proliferationTimes
