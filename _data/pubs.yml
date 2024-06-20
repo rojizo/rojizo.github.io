@@ -1,7 +1,35 @@
+- title: |
+    Dominant patterns in small directed bipartite networks: ubiquitous generalized tripod gait
+  tags: research
+  kind: article
+  journal: Nonlinear Dynamics
+  authors:
+    - name: Lozano Rojo, Álvaro
+    - name: Vigara Benito, Rubén
+    - name: Barrio, Roberto
+    - name: Mayora-Cebollero, Carmen
+  year: 2024
+  doi: 10.1007/s11071-024-09830-2
+
+- title: Coupling of neurons favors the bursting behavior and the predominance of the tripod gait
+  tags: research
+  kind: article
+  journal: Chaos, Solitons and Fractals
+  authors:
+    - name: Serrano, Sergio
+    - name: Roberto, Barrio
+    - name: Lozano Rojo, Álvaro
+    - name: Mayora-Cebollero, Ana
+    - name: Vigara Benito, Rubén
+  year: 2024
+  vol: 184 
+  pages: 114928
+  doi: 10.1016/j.chaos.2024.114928
+
+
 - title: Deep Learning for Chaos Detection
   tags: research
   kind: article
-  journal: Chaos
   authors:
     - name: Roberto, Barrio
     - name: Lozano Rojo, Álvaro
