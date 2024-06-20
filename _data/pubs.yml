@@ -14,18 +14,18 @@
 - title: Coupling of neurons favors the bursting behavior and the predominance of the tripod gait
   tags: research
   kind: article
-  journal: Chaos, Solitons and Fractals
+  journal: Chaos
   authors:
     - name: Serrano, Sergio
     - name: Roberto, Barrio
     - name: Lozano Rojo, Álvaro
     - name: Mayora-Cebollero, Ana
     - name: Vigara Benito, Rubén
+  journal: Chaos, Solitons & Fractals
   year: 2024
-  vol: 184 
+  vol: 184
   pages: 114928
   doi: 10.1016/j.chaos.2024.114928
-
 
 - title: Deep Learning for Chaos Detection
   tags: research
