@@ -1,4 +1,23 @@
 - title: |
+    Almost synchronization phenomena in the two and three coupled Brusselator systems
+  tags: research
+  kind: article
+  journal: "Physica D: Nonlinear Phenomena"
+  authors:
+    - name: Mayora-Cebollero, Ana
+    - name: Jover-Galtier, Jorge A.
+    - name: Drubi, Fátima
+    - name: Ibañez, Santiago
+    - name: Lozano Rojo, Álvaro
+    - name: Mayora-Cebollero, Carmen
+    - name: Barrio, Roberto
+  year: 2025
+  vol: 472
+  pages: 134457
+  doi: https://doi.org/10.1016/j.physd.2024.134457
+
+
+- title: |
     Dominant patterns in small directed bipartite networks: ubiquitous generalized tripod gait
   tags: research
   kind: article
@@ -12,7 +31,6 @@
   vol: 112
   pages: 15549–15565
   doi: 10.1007/s11071-024-09830-2
-
 
 - title: Coupling of neurons favors the bursting behavior and the predominance of the tripod gait
   tags: research
