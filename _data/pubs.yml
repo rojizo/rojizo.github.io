@@ -1,4 +1,18 @@
 - title: |
+    Full Lyapunov Exponents spectrum with Deep Learning from single-variable time series
+  tags: research
+  kind: article
+  journal: arXiv
+  authors:
+    - name: Mayora-Cebollero, Carmen
+    - name: Mayora-Cebollero, Ana
+    - name: Lozano Rojo, Álvaro
+    - name: Barrio, Roberto
+  year: 2024
+  url: https://arxiv.org/abs/2406.16161
+
+
+- title: |
     Almost synchronization phenomena in the two and three coupled Brusselator systems
   tags: research
   kind: article
@@ -14,8 +28,7 @@
   year: 2025
   vol: 472
   pages: 134457
-  doi: https://doi.org/10.1016/j.physd.2024.134457
-
+  doi: 10.1016/j.physd.2024.134457
 
 - title: |
     Dominant patterns in small directed bipartite networks: ubiquitous generalized tripod gait
