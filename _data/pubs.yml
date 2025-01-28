@@ -483,6 +483,7 @@
   year: 2009
   pages: 1-16
   arxiv: "0809.0772"
+  doi: 10.24033/ast.779
 
 - title: Affability of Euclidean tilings
   tags: research
@@ -510,6 +511,10 @@
   vol: 99
   year: 2014
   pages: 322-332
+  links:
+    - https://zenodo.org/records/10631908
+
+
 
 - title: Dinámica transversa de laminaciones definidas por grafos repetitivos
   tags: research
