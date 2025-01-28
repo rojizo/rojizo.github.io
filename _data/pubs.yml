@@ -550,4 +550,19 @@
   pages: 21-38
   authors:
     - name: Lozano Rojo, Álvaro
+  url: |
+    https://ctri.uva.es/ctri/images/stories/documentos/rsim3iv.pdf
 
+- title: Evolutionary dynamics on graphs
+  tags: other research
+  kind: article
+  journal: Revista del Seminario Iberoamericano de Matemáticas
+  vol: 4
+  num: II
+  year: 2013
+  pages: 3-17
+  authors:
+    - name: Alcalde Cuesta, Álvaro
+    - name: González Sequeiros, Pablo
+    - name: Lozano Rojo, Álvaro
+    
