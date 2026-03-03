@@ -1,4 +1,20 @@
 - title: |
+    Bregman proximal gradient with extrapolation to train a reservoir computing network for a binary classification task
+  tags: research
+  kind: article
+  journal: |
+    Information Sciences
+  authors:
+    - name: Mayora-Cebollero, Carmen
+    - name: Mayora-Cebollero, Ana
+    - name: Lozano Rojo, Álvaro
+    - name: Barrio, Roberto
+  year: 2026
+  pages: 123275
+  doi: 10.1016/j.ins.2026.123275
+
+
+- title: |
     Full Lyapunov Exponents spectrum with Deep Learning from single-variable time series
   tags: research
   kind: article
